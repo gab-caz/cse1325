@@ -12,7 +12,7 @@ public class Coin
     @Override
     public double getValue()
     {
-        switch(denomination)
+        return switch(denomination)
         {
             case PENNY -> 0.01;
             case NICKEL -> 0.05;
