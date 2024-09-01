@@ -19,7 +19,7 @@ public class Coin
             case DIME -> 0.10;
             case QUARTER -> 0.25;
             default -> 0.00;
-        }
+        };
 
     }
     
