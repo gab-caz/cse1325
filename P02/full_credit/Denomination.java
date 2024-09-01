@@ -1,4 +1,4 @@
 public enum Denomination
 {
-	PENNY, NICKEL, DIME, QUARTER
+    PENNY, NICKEL, DIME, QUARTER
 }
