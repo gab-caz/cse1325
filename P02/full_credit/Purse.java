@@ -2,14 +2,10 @@ public class Purse
 {
 	public static void main(String[] args)
 	{
-		Coin[8] Money = { new Coin(Denomination.PENNY, 1904),
-						  new Coin(Denomination.NICKEL, 1945),
-						  new Coin(Denomination.DIME, 1996),
-						  new Coin(Denomination.QUARTER, 2006),
-						  new Coin(Denomination.PENNY, 1975),
-						  new Coin(Denomination.NICKEL, 1981),
-						  new Coin(Denomination.DIME, 1998),
-						  new Coin(Denomination.QUARTER, 2003) };
+		Coin[8] Money = { new Coin(Denomination.PENNY, 1904), new Coin(Denomination.NICKEL, 1945),
+						new Coin(Denomination.DIME, 1996), new Coin(Denomination.QUARTER, 2006),
+						new Coin(Denomination.PENNY, 1975), new Coin(Denomination.NICKEL, 1981),
+						new Coin(Denomination.DIME, 1998), new Coin(Denomination.QUARTER, 2003) };
 		
 		double total = 0;
 		int earliestDate = Money[0].getYear();
