@@ -31,7 +31,7 @@ public class Purse
             }
         }
 
-        System.out.printf("\nYou have a total of $%.2f%n" + total);
+        System.out.printf(String.format("\nYou have a total of $%.2f%n" + total));
         System.out.printf("\nThe coins span the years " + earliestDate + "-" + latestDate);
     }
 }
