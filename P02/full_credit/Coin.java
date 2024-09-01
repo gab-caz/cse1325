@@ -9,7 +9,6 @@ public class Coin
         this.year = year;
     }
 
-    @Override
     public double getValue()
     {
         return switch(denomination)
