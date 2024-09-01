@@ -31,7 +31,7 @@ public class Purse
             }
         }
 
-        System.out.println("Your wallet has $" + total);
+        System.out.println("You have a total of $%.2f" + total);
         System.out.println("The coins span the years " + earliestDate + "-" + latestDate);
     }
 }
