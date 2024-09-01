@@ -11,6 +11,10 @@ public class Purse
 						  new Coin(Denomination.DIME, 1998),
 						  new Coin(Denomination.QUARTER, 2003) };
 		
+		double total = 0;
+		int earliestDate = Money[0].getYear();
+		int latestDate = Money[0].getYear();
+
 		for (Coin coin : Money)
 		{
 			total += coin.getValue();
@@ -20,9 +24,9 @@ public class Purse
 				earliestDate = coin.getYear();
 			}
 			
-			if (coin.getYear() > latestYear)
+			if (coin.getYear() > latestDate)
 			{
-				latestYear = coin.getYear();
+				latestDate = coin.getYear();
 			}
 		}
 
