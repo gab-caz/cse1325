@@ -16,7 +16,14 @@ public class Coin
 
     public double getWeight()
     {
-        
+        return switch(denomination)
+        {
+            case PENNY ->
+            case NICKEL ->
+            case DIME ->
+            case QUARTER ->
+            default -> 0.0
+        }
     }
     
     public int getYear()

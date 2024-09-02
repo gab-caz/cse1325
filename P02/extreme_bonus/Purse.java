@@ -13,6 +13,7 @@ public class Purse
                        };
         
         double total = 0;
+        double weight = 0;
         int earliestDate = money[0].getYear();
         int latestDate = money[0].getYear();
 
@@ -37,11 +38,13 @@ public class Purse
                 {
                     System.out.println(coin);
                     total += coin.getValue();
+                    weight += coin.getWeight();
                 }
             }
         }
 
         System.out.printf("\nYou have a total of $%.2f", total);
         System.out.printf("\nThe coins span the years " + earliestDate + "-" + latestDate);
+        System.out.printf("\nYour coins weigh %f grams", weight);
     }
 }
