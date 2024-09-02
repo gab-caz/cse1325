@@ -16,13 +16,21 @@ public class Coin
 
     public double getWeight()
     {
-        return switch(denomination)
+        if (denomination == Denomination.PENNY)
         {
-            case PENNY ->
-            case NICKEL ->
-            case DIME ->
-            case QUARTER ->
-            default -> 0.0
+            return year 
+        }
+        else if (denomination == Denomination.NICKEL)
+        {
+            return 5.000;
+        }
+        else if (denomination == Denomination.DIME)
+        {
+            return year 
+        }
+        else if (denomination == Denomination.QUARTER)
+        {
+            return year
         }
     }
     
