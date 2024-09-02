@@ -11,12 +11,12 @@ public enum Denomination
 
     public double getValue()
     {
-
+        return value;
     }
 
     @Override
     public String toString()
     {
-        return toLowerCase();
+        return name().toLowerCase();
     }
 }

@@ -18,8 +18,9 @@ public class Purse
 
         for (Coin coin : money)
         {
+            System.out.println(coin);
             total += coin.getValue();
-            
+
             if (coin.getYear() < earliestDate)
             {
                 earliestDate = coin.getYear();
