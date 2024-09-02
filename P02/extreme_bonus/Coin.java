@@ -18,7 +18,7 @@ public class Coin
     {
         if (denomination == Denomination.PENNY)
         {
-            return year 
+            return year < 1983 ? 3.110 : 2.500;
         }
         else if (denomination == Denomination.NICKEL)
         {
@@ -26,11 +26,11 @@ public class Coin
         }
         else if (denomination == Denomination.DIME)
         {
-            return year 
+            return year < 1965 ? 2.500 : 2.268;
         }
         else if (denomination == Denomination.QUARTER)
         {
-            return year
+            return year < 1965 ? 6.250 : 5.670;
         }
     }
     

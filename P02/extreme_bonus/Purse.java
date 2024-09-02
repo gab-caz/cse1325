@@ -45,6 +45,6 @@ public class Purse
 
         System.out.printf("\nYou have a total of $%.2f", total);
         System.out.printf("\nThe coins span the years " + earliestDate + "-" + latestDate);
-        System.out.printf("\nYour coins weigh %f grams", weight);
+        System.out.printf("\nYour coins weigh %.3f grams", weight);
     }
 }
