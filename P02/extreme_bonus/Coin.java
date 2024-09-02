@@ -32,6 +32,7 @@ public class Coin
         {
             return year < 1965 ? 6.250 : 5.670;
         }
+        return 0.000;
     }
     
     public int getYear()
