@@ -11,6 +11,6 @@ public class Media
     @Override
     public String toString()
     {
-
+        return title + (url);
     }
 }
