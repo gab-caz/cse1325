@@ -1,11 +1,11 @@
 public class Student
 {
-    private string name;
+    private String name;
     private int id;
-    private string email;
+    private String email;
     private Account account;
 
-    public Student(string name, int id, string email)
+    public Student(String name, int id, String email)
     {
         if(!email.endsWith("@uta.edu") && !email.endsWith("@mavs.uta.edu"))
         {
