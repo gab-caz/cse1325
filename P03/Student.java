@@ -7,7 +7,7 @@ public class Student
 
     public Student(string name, int id, string email)
     {
-        if()
+        if(!email.endsWith("@uta.edu") && !email.endsWith("@mavs.uta.edu"))
         {
             throw new IllegalArgumentException("Non-UTA email address: " + email);
         }
