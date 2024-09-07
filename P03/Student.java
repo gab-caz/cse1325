@@ -12,16 +12,20 @@ public class Student
             throw new IllegalArgumentException("Non-UTA email address: " + email);
         }
 
+        this.name = name;
+        this.id = id;
+        this.email = email;
+        this.account = new Account();
     }
 
     public String requestMedia(Media media)
     {
-        return ;
+        return account.play(media);
     }
 
     @Override
     public String toString()
     {
-
+        return name + " (" + id + ", " + email + ", Account #" + account.getAccountNumber() + ")";
     }
 }

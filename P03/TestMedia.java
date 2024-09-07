@@ -2,29 +2,11 @@ public class TestMedia
 {
     public static void main(String[] args)
     {
-        if()
+        String expected = title + " (" + url + ")";
+
+        if(!media.toString().equals())
         {
-            System.err.printf("FAIL" + media.toString());
+            System.err.println("FAIL: Unexpected media. Expected " + media.toString());
         }
-
-        if()
-        {
-            System.err.printf("FAIL" + media.toString());
-        }
-
-        if()
-        {
-            System.err.printf("FAIL" + media.toString());
-        }
-
-        try
-        {
-
-        }
-        catch()
-        {
-
-        }
-
     }
 }

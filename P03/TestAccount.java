@@ -1,6 +1,6 @@
 public class TestAccount
 {
-    public static voic main(String[] args)
+    public static void main(String[] args)
     {
         if()
         {
