@@ -1,7 +1,7 @@
 public class Account
 {
     private int accountNumber;
-    private static int nextAccountNumber;
+    private static int nextAccountNumber = 1;
 
     public Account()
     {

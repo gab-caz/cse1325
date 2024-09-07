@@ -2,28 +2,18 @@ public class TestAccount
 {
     public static void main(String[] args)
     {
-        if()
+        Account firstAccountNumber = new Account();
+
+        if(firstAccountNumber.getAccountNumber() != 1)
         {
-            System.err.printf("FAIL" + media.toString());
+            System.err.println("FAIL: First account number incorrect. Expected 1 but returned " + firstAccountNumber.getAccountNumber());
         }
 
-        if()
-        {
-            System.err.printf("FAIL" + media.toString());
-        }
+        Account secondAccountNumber = new Account();
 
-        if()
+        if(secondAccountNumber.getAccountNumber() != 2)
         {
-            System.err.printf("FAIL" + media.toString());
-        }
-
-        try
-        {
-
-        }
-        catch()
-        {
-
+            System.err.println("FAIL: Second account number incorrect. Expected 2 but returned " + secondAccountNumber.getAccountNumber());
         }
     }
 }
