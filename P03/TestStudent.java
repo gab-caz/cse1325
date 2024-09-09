@@ -34,16 +34,15 @@ public class TestStudent
 
 
         //Test3:verify media returns "Playing" and media.toString() result
-        try
+        String expectedMedia = "Playing Title (https://url.com)";
+        Media media = new Media("Title", "https://url.com");
+        if (!(expectedMedia))
         {
-            System.err.println("Test 3 Failed. ");
+            System.err.println("Test 3 Failed...requesting media returned unexpected results");
             failureCount++;
         }
-        catch (Exception e)
-        {
-            System.err.println("Test 3 Failed. ");
-            failureCount++;         
-        }
+        
+    
 
         System.exit(failureCount);
     }
