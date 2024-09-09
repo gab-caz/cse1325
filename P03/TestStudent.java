@@ -17,18 +17,21 @@ public class TestStudent
         //Test2:verify that if nonUTA email is used, throw error(3 failure)
         try
         {
-            Student studentTest2 = new Student("John Doe", 9087654321, "jd@gmail.com");
-            System.err.println("Test 2 Failed...");
+            Student studentTest2 = new Student("John Doe", 9087654321, "john.doe@gmail.com");
+            System.err.println("Test 2 Failed...IllegalArgumentException was not thrown for incorrect email.");
             failureCount++;
         }
         catch (IllegalArgumentException e)
         {
-            System.err.println("Test 2 Failed...");
-            failureCount++;
+            if(!e.getMessage().equals("Non-UTA email address: john.doe@gmail.com"))
+            {
+                System.err.println("Test 2 Failed...Unexpected exception message was given." + e.getMessage());
+                failureCount++;
+            }
         }
         catch (Exception e)
         {
-            System.err.println("Test 2 Failed...");
+            System.err.println("Test 2 Failed...Unexpected exception was given" + e);
             failureCount++;
         }
 
