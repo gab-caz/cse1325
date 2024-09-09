@@ -5,11 +5,11 @@ public class TestStudent
         int failureCount = 0;
 
         //Test1:verify toString returns correct representation
-        String expectedtoString = "name(id,email,account#)";
-        Student student = new Student();
+        String expectedtoString = "Jane Doe (1234567890, jxd@mavs.uta.edu, Account #1)";
+        Student student = new Student("Jane Doe", 1234567890, "jxd@mavs.uta.edu");
         if (!expectedtoString.equals(student.toString()))
         {
-            System.err.println("Test 1 Failed. toString() not correct representation.");
+            System.err.println("Test 1 Failed...toString() method did not return correct representation.");
             failureCount++;
         }
 
@@ -17,23 +17,23 @@ public class TestStudent
         //Test2:verify that if nonUTA email is used, throw error(3 failure)
         try
         {
-            new Student();
-            System.err.println("Test 2 Failed. ");
+            new Student("John Doe", 9087654321, "jd@gmail.com");
+            System.err.println("Test 2 Failed...");
             failureCount++;
         }
         catch (IllegalArgumentException e)
         {
-            System.err.println("Test 2 Failed. ");
+            System.err.println("Test 2 Failed...");
             failureCount++;
         }
         catch (Exception e)
         {
-            System.err.println("Test 2 Failed ");
+            System.err.println("Test 2 Failed...");
             failureCount++;
         }
 
 
-        //test3:verify media returns "Playing" and result
+        //Test3:verify media returns "Playing" and media.toString() result
         try
         {
             System.err.println("Test 3 Failed. ");
