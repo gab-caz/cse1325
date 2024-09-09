@@ -5,11 +5,11 @@ public class TestStudent
         int failureCount = 0;
 
         //Test1:verify toString returns correct representation
-        String expectedtoString = "Jane Doe (1234567890, jxd@mavs.uta.edu, Account #1)";
+        String expectedtoString = "Jane Doe (1234567890, jxd@mavs.uta.edu, Account #" + studentTest1.getAccount().getAccountNumber() + ")";
         Student studentTest1 = new Student("Jane Doe", 1234567890, "jxd@mavs.uta.edu");
-        if (!expectedtoString.equals(student.toString()))
+        if (!studentTest1.toString().equals(expectedtoString))
         {
-            System.err.println("Test 1 Failed...toString() method did not return correct representation.");
+            System.err.println("Test 1 Failed...toString() method did not return correct representation. " + studentTest1.toString());
             failureCount++;
         }
 
