@@ -7,7 +7,7 @@ public class TestStudent
         int failureCount = 0;
 
         //Test1:verify toString returns correct representation
-        Student studentTest1 = new Student("Jane Doe", 1234567890, "jxd@mavs.uta.edu");
+        Student studentTest1 = new Student("Jane Doe", 1001234567, "jxd@mavs.uta.edu");
         String expectedtoString = "Jane Doe (1234567890, jxd@mavs.uta.edu, Account #" + studentTest1.getAccount().getAccountNumber() + ")";
         if (!studentTest1.toString().equals(expectedtoString))
         {
@@ -19,7 +19,7 @@ public class TestStudent
         //Test2:verify that if nonUTA email is used, throw error(3 failure)
         try
         {
-            Student studentTest2 = new Student("John Doe", 9087654321, "john.doe@gmail.com");
+            Student studentTest2 = new Student("John Doe", 10019876543, "john.doe@gmail.com");
             System.err.println("Test 2 Failed...IllegalArgumentException was not thrown for incorrect email.");
             failureCount++;
         }
@@ -39,7 +39,7 @@ public class TestStudent
 
 
         //Test3:verify media returns "Playing" and media.toString() result
-        Student studentTest3 = new Student ("John Smith", 1234567098, "jxs@uta.edu");
+        Student studentTest3 = new Student ("John Smith", 10016543298, "jxs@uta.edu");
         String expectedMedia = "Playing Title (https://url.com)";
         Media media = new Media("Title", "https://url.com");
         String mediaResult = studentTest3.requestMedia(media);
