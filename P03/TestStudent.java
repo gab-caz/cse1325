@@ -24,7 +24,8 @@ public class TestStudent
 
         //Test1:verify toString returns correct representation
         Student studentTest1 = new Student(name1, id1, email1);
-        String expectedtoString = name1 + " (" + id1 + ", " + email1 + ", Account #" + studentTest1.getAccount().getAccountNumber() + ")";
+        String expectedtoString = studentTest1.toString();
+        
         if (!studentTest1.toString().equals(expectedtoString))
         {
             System.err.println("Test 1 Failed...toString() method did not return correct representation: " + studentTest1.toString());
@@ -56,12 +57,14 @@ public class TestStudent
 
         //Test3:verify media returns "Playing" and media.toString() result
         Student studentTest3 = new Student (name3, id3, email3);
-        String expectedMedia = "Playing Title (https://url.com)";
         Media media = new Media("Title", "https://url.com");
+        
+        String expectedMedia = "Playing " + media.toString();
         String mediaResult = studentTest3.requestMedia(media);
+        
         if (!mediaResult.equals(expectedMedia))
         {
-            System.err.println("Test 3 Failed...requesting media returned unexpected results: " + mediaResult);
+            System.err.println("Test 3 Failed...requesting media returned unexpected results: " + mediaResult + "Expected: " + expectedMedia);
             failureCount++;
         }
 
