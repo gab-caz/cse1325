@@ -1,3 +1,5 @@
+//note for self: regression test
+
 public class TestAccount
 {
     public static void main(String[] args)
