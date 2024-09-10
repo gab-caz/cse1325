@@ -1,4 +1,5 @@
 //note for self: regression test
+import java.net.MalformedURLException;
 
 public class TestMedia
 {
@@ -13,5 +14,7 @@ public class TestMedia
         {
             System.err.println("FAIL: Unexpected media. Expected " + expected + "Actual string returned" + media.toString());
         }
+
+        
     }
 }
