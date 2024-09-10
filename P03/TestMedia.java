@@ -15,6 +15,29 @@ public class TestMedia
             System.err.println("FAIL: Unexpected media. Expected " + expected + "Actual string returned" + media.toString());
         }
 
-        
+        String[] validURLTest = {"https://youtube.com", "file://media/lib/garp.mp4"};
+        String[] invalidURLTest = {"hello.world", "htt://badurl.com", "flub://badurl.com"};
+
+        try
+        {
+            new Media("Valid", validURL);
+
+        }
+        catch (RuntimeException e)
+        {
+            System.err.println("Error: URL is valid but rejected.");
+        }
+
+        try
+        {
+            new Media("Invalid", invalidURL);
+            System.err.println("FAIL: URL is invalid but accepted.");
+        }
+        catch ()
+        {
+            
+        }
+
+
     }
 }
