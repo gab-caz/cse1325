@@ -1,5 +1,6 @@
-import java.net.URL;//note to self:use this to validate the URL
+import java.net.URL;//note to self:use this to validate the URL....actually is deprecated
 import java.net.MalformedURLException;//note to self:use this to throw an exception if URL is invalid
+import java.net.URI;//note to self:oracle recommends
 
 public class Media
 {
@@ -13,8 +14,8 @@ public class Media
 
         try
         {
-            new URL(url);
-            this.url = url;
+            URI uri = new URL(url);
+            URL validURL = uri.toURL();
         }
         catch (MalformedURLException e)
         {
