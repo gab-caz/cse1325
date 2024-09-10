@@ -1,4 +1,5 @@
 //note for self: regression test
+import java.net.URL;
 import java.net.MalformedURLException;
 
 public class TestMedia
@@ -15,29 +16,44 @@ public class TestMedia
             System.err.println("FAIL: Unexpected media. Expected " + expected + "Actual string returned" + media.toString());
         }
 
+
         String[] validURLTest = {"https://youtube.com", "file://media/lib/garp.mp4"};
         String[] invalidURLTest = {"hello.world", "htt://badurl.com", "flub://badurl.com"};
 
-        try
+        //VALID URL TEST
+        for(String validURL : validURLTest)
         {
-            new Media("Valid", validURL);
-
-        }
-        catch (RuntimeException e)
-        {
-            System.err.println("Error: URL is valid but rejected.");
-        }
-
-        try
-        {
-            new Media("Invalid", invalidURL);
-            System.err.println("FAIL: URL is invalid but accepted.");
-        }
-        catch ()
-        {
-            
+            try
+            {
+                new Media("Valid", validURL);
+            }
+            catch (RuntimeException e)
+            {
+                System.err.println("FAIL: Valid URL but rejected. " + validURL);
+            }
+            catch (Exception e)
+            {
+                System.err.println("FAIL: Valid URL but unexpected exception. " + validURL);
+            }
         }
 
 
+        //INVALID URL TEST
+        for(String invalidURL : invalidURLTest)
+        {
+            try
+            {
+                new Media("Invalid", invalidURL);
+                System.err.println("FAIL: Invalid URL but accepted. " + invalidURL);
+            }
+            catch (RuntimeException e)
+            {
+
+            }
+            catch (Exception e)
+            {
+                System.err.println("FAIL: Unexpected exception. " + invalidURL);
+            }
+        }
     }
 }
