@@ -9,17 +9,17 @@ public class Media
     public Media(String title, String url)
     {
         this.title = title;
-        this.url = url;
 
         try
         {
-            new URI(url);
-            //this.url = url;  
+            new URI(url).toURL();  
         }
-        catch (URISyntaxException e)
+        catch (Exception e)
         {
-            throw new IllegalArgumentException("Invalid URL: " + url, e);
+            throw new RuntimeException("Invalid URL: " + url, e);
         }
+
+        this.url = url;
     }
 
     @Override

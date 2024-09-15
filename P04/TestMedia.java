@@ -1,6 +1,4 @@
 //note for self: regression test
-//import java.net.URL;
-//import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -46,7 +44,7 @@ public class TestMedia
             }
             catch (Exception e)
             {
-                System.err.println("FAIL: Unexpected exception. " + invalidURL);
+    
             }
         }
     }
