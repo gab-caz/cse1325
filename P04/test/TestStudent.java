@@ -59,7 +59,7 @@ public class TestStudent
 
         //Test3:verify media returns "Playing" and media.toString() result
         Student studentTest3 = new Student (name3, id3, email3);
-        Media media = new Media("Title", "https://url.com");
+        Media media = new Media("Title", "https://url.com", 80);
         
         String expectedMedia = "Playing " + media.toString();
         String mediaResult = studentTest3.requestMedia(media);
