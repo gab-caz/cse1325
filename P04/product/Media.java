@@ -1,3 +1,5 @@
+package product;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 

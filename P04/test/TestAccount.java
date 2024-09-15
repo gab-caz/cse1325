@@ -1,4 +1,5 @@
-//note for self: regression test
+package test;
+import customer.Account;
 
 public class TestAccount
 {
@@ -19,3 +20,5 @@ public class TestAccount
         }
     }
 }
+
+//grader said:consider for loop instead of creating two account instances

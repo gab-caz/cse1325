@@ -1,4 +1,6 @@
-//note for self: regression test
+package test;
+import customer.Student;
+import product.Media;
 
 public class TestStudent
 {

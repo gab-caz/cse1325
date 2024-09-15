@@ -1,6 +1,8 @@
-//note for self: regression test
-import java.net.URI;
-import java.net.URISyntaxException;
+package test;
+import product.Media;
+
+//import java.net.URI;
+//import java.net.URISyntaxException;
 
 public class TestMedia
 {
