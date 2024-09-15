@@ -1,7 +1,5 @@
-import java.net.URL;//note to self:use this to validate the URL....actually is deprecated
-import java.net.MalformedURLException;//note to self:use this to throw an exception if URL is invalid
-//import java.net.URI;//note to self:oracle recommends
-//import java.net.URISyntaxException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public class Media
 {
@@ -15,12 +13,12 @@ public class Media
 
         try
         {
-            new URL(url);
-            this.url = url;            
+            new URI(url);
+            //this.url = url;  
         }
-        catch (MalformedURLException e)
+        catch (URISyntaxException e)
         {
-            throw new RuntimeException("Invalid URL: " + url, e);
+            throw new IllegalArgumentException("Invalid URL: " + url, e);
         }
     }
 

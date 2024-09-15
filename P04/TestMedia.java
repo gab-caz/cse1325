@@ -1,6 +1,8 @@
 //note for self: regression test
-import java.net.URL;
-import java.net.MalformedURLException;
+//import java.net.URL;
+//import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public class TestMedia
 {
@@ -27,10 +29,6 @@ public class TestMedia
             {
                 new Media("Valid", validURL);
             }
-            catch (RuntimeException e)
-            {
-                System.err.println("FAIL: Valid URL but rejected. " + validURL);
-            }
             catch (Exception e)
             {
                 System.err.println("FAIL: Valid URL but unexpected exception. " + validURL);
@@ -45,10 +43,6 @@ public class TestMedia
             {
                 new Media("Invalid", invalidURL);
                 System.err.println("FAIL: Invalid URL but accepted. " + invalidURL);
-            }
-            catch (RuntimeException e)
-            {
-
             }
             catch (Exception e)
             {
