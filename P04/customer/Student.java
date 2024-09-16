@@ -1,5 +1,6 @@
 package customer;
 import product.Media;
+import customer.Unlimited;
 
 public class Student
 {
@@ -18,7 +19,7 @@ public class Student
         this.name = name;
         this.id = id;
         this.email = email;
-        this.account = new Account();
+        this.account = new Unlimited();
     }
 
     public String requestMedia(Media media)

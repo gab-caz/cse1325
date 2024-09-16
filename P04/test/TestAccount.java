@@ -1,24 +1,24 @@
 package test;
 import customer.Account;
+import customer.Unlimited;
 
 public class TestAccount
 {
     public static void main(String[] args)
     {
-        Account firstAccountNumber = new Account();
+        int accountNumber = 2;
+        int expectedAccountNumber = 1;
 
-        if(firstAccountNumber.getAccountNumber() != 1)
+        for (int i = 0; i < accountNumber; i++)
         {
-            System.err.println("FAIL: First account number incorrect. Expected 1 but returned " + firstAccountNumber.getAccountNumber());
-        }
+            Account account = new Unlimited();
 
-        Account secondAccountNumber = new Account();
+            if(account.getAccountNumber() != expectedAccountNumber)
+            {
+                System.err.println("FAIL: Account number incorrect: " + account.getAccountNumber() + "Expected " + expectedAccountNumber);
+            }
 
-        if(secondAccountNumber.getAccountNumber() != 2)
-        {
-            System.err.println("FAIL: Second account number incorrect. Expected 2 but returned " + secondAccountNumber.getAccountNumber());
+            expectedAccountNumber++;
         }
     }
 }
-
-//grader said:consider for loop instead of creating two account instances
