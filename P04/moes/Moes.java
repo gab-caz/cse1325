@@ -36,12 +36,31 @@ public class Moes
 
     public String getStudentList()
     {
+        StringBuilder sb = new StringBuilder();
 
+        for(i = 0; i < customers.size(); i++)
+        {
+            Student student = customers.get(i);
+            sb.append(i).append(") ").append(student.toString().append("\n"));
+        }
+        return sb.toString();
     }
 
-    public int getPoints(studentIndex)
+    public String getPoints(int studentIndex)
     {
+        
+        if(account instanceof Alacarte)
+        {
 
+        }
+        else if(account instanceof Unlimited)
+        {
+            return Integer.MAX_VALUE;
+        }
+        else
+        {
+            throw new UnsupportedOperationException("Unknown subclass of Account");
+        }
     }
 
     public String buyPoints(int studentIndex, int points)
