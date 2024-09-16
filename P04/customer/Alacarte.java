@@ -32,7 +32,7 @@ public class Alacarte extends Account
         }
         else
         {
-            return "Buy more points: Requires " + requiredPoints + "points, you have " + pointsRemaining;
+            return "Buy more points: Requires " + requiredPoints + " points, you have " + pointsRemaining;
         }
     }
 }

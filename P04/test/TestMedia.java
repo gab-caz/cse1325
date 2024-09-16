@@ -10,7 +10,7 @@ public class TestMedia
         int points = 80;
         
         Media media = new Media(title, url, points);
-        String expected = title + " (" + url + ")" + "Points: " + points;
+        String expected = title + " (" + url + ", " + points + " points)";
 
         if(!media.toString().equals(expected))
         {

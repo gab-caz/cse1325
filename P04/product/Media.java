@@ -66,6 +66,6 @@ public class Media
     @Override
     public String toString()
     {
-        return title + " (" + url + ")" + "Points: " + points;
+        return title + " (" + url + ", " + points + " points)";
     }
 }
