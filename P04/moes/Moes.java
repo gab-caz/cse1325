@@ -17,19 +17,19 @@ public class Moes
         library.add(media);
     }
 
-    public String getMediaList()//media management
+    public String getMediaList()
     {
         StringBuilder sb = new StringBuilder();
 
-        for(i = 0; i < library.size(); i++)
+        for(int i = 0; i < library.size(); i++)
         {
             Media media = library.get(i);
-            sb.append(i).append(") ").append(media.toString().append("\n"));
+            sb.append(i).append(") ").append(media.toString()).append("\n");
         }
         return sb.toString();
     }
 
-    public void addStudent(Student student)//student management
+    public void addStudent(Student student)
     {
         customers.add(student);
     }
@@ -38,20 +38,23 @@ public class Moes
     {
         StringBuilder sb = new StringBuilder();
 
-        for(i = 0; i < customers.size(); i++)
+        for(int i = 0; i < customers.size(); i++)
         {
             Student student = customers.get(i);
-            sb.append(i).append(") ").append(student.toString().append("\n"));
+            sb.append(i).append(") ").append(student.toString()).append("\n");
         }
         return sb.toString();
     }
 
     public String getPoints(int studentIndex)
     {
+        Student student = customers.get(studentIndex);
+        Account account = student.getAccount();
         
         if(account instanceof Alacarte)
         {
-
+            Alacarte alaAccount = (Alacarte) account;
+            return alaAccount.getPointsRemaining();
         }
         else if(account instanceof Unlimited)
         {
@@ -65,11 +68,29 @@ public class Moes
 
     public String buyPoints(int studentIndex, int points)
     {
-
+        Student student = customers.get(studentIndex);
+        Account account = student.getAccount();
+        
+        if(account instanceof Alacarte)
+        {
+            Alacarte alaAccount = (Alacarte) account;
+            alaAccount.buyPoints(points);
+            return "Updated points after purchase: " + alaAccount.getPointsRemaining();
+        }
+        else if(account instanceof Unlimited)
+        {
+            return "You now have an unlimited account and need no additional points.";
+        }
+        else
+        {
+            throw new UnsupportedOperationException("Unknown subclass of Account");
+        }
     }
 
     public String playMedia(int studentIndex, int mediaIndex)
     {
-
+        Student student = customers.get(studentIndex);
+        Media media = library.get(mediaIndex);
+        return student.requestMedia(media);
     }
 }
