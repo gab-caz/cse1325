@@ -17,14 +17,21 @@ public class Moes
         library.add(media);
     }
 
-    public String getMediaList()
+    public String getMediaList()//media management
     {
+        StringBuilder sb = new StringBuilder();
 
+        for(i = 0; i < library.size(); i++)
+        {
+            Media media = library.get(i);
+            sb.append(i).append(") ").append(media.toString().append("\n"));
+        }
+        return sb.toString();
     }
 
-    public addStudent(Student student)
+    public void addStudent(Student student)//student management
     {
-
+        customers.add(student);
     }
 
     public String getStudentList()
