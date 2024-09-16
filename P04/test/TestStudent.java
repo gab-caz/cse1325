@@ -25,7 +25,7 @@ public class TestStudent
 
 
         //Test1:verify toString returns correct representation
-        Student studentTest1 = new Student(name1, id1, email1);
+        Student studentTest1 = new Student(name1, id1, email1, true);
         String expectedtoString = studentTest1.toString();
         
         if (!studentTest1.toString().equals(expectedtoString))
@@ -38,7 +38,7 @@ public class TestStudent
         //Test2:verify that if nonUTA email is used, throw error(3 failure)
         try
         {
-            Student studentTest2 = new Student(name2, id2, email2);
+            Student studentTest2 = new Student(name2, id2, email2, false);
             System.err.println("Test 2 Failed...IllegalArgumentException was not thrown for incorrect email.");
             failureCount++;
         }
@@ -58,7 +58,7 @@ public class TestStudent
 
 
         //Test3:verify media returns "Playing" and media.toString() result
-        Student studentTest3 = new Student (name3, id3, email3);
+        Student studentTest3 = new Student (name3, id3, email3, true);
         Media media = new Media("Title", "https://url.com", 80);
         
         String expectedMedia = "Playing " + media.toString();

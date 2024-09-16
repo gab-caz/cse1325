@@ -46,7 +46,7 @@ public class Moes
         return sb.toString();
     }
 
-    public String getPoints(int studentIndex)
+    public int getPoints(int studentIndex)
     {
         Student student = customers.get(studentIndex);
         Account account = student.getAccount();
