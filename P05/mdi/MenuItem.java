@@ -1,3 +1,5 @@
+package mdi;
+
 public class MenuItem implements Runnable
 {
     private Object menuText;
@@ -9,13 +11,13 @@ public class MenuItem implements Runnable
         this.menuResponse = menuResponse;
     }
 
-    @Overrride
+    @Override
     public String toString()
     {
         return menuText.toString();
     }
 
-    @Overrride
+    @Override
     public void run()
     {
         menuResponse.run();
