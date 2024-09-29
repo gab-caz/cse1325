@@ -43,22 +43,38 @@ public class Main
 
     private void playMedia()
     {
-        output = moes.getMediaList();
+        int studentIndex = Menu.getInt("Student number? ");
+        int mediaIndex = Menu.getInt("Media number? ");
+
+        output = moes.playMedia(studentIndex, mediaIndex);
     }
 
     private void listMedia()
     {
-
+        output = moes.getMediaList();
     }
 
     private void listAvailablePoints()
     {
+        int studentIndex = Menu.getInt("Student number? ");
 
+        output = "Number of points you have: " + moes.getPoints(studentIndex);
     }
 
     private void buyPoints()
     {
+        int studentIndex = Menu.getInt("Student number? ");
+        int totalPoints = moes.getPoints(studentIndex);
+        int addPoints = Menu.getInt("How many additional points would you like to buy? ");
 
+        if(addPoints < 0)
+        {
+            output = "No purchasing negative points!";
+        }
+        else
+        {
+            output = moes.buyPoints(studentIndex, addPoints);
+        }
     }
 
     public Main()
