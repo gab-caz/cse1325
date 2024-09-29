@@ -79,21 +79,55 @@ public class Main
 
     public Main()
     {
+        this.moes = moes;
+        this.output = output;
+        this.menu = menu;
+        this.running = running;
 
+        menu.addMenuItem(new MenuItem("Play media",             () -> playMedia()));
+        menu.addMenuItem(new MenuItem("List media",             () -> listMedia()));
+        menu.addMenuItem(new MenuItem("List available points",  () -> listAvailablePoints()));
+        menu.addMenuItem(new MenuItem("Buy points",             () -> buyPoints()));
+        menu.addMenuItem(new MenuItem("Add media",              () -> addMedia()));
+        menu.addMenuItem(new MenuItem("List all students",      () -> listStudents()));
+        menu.addMenuItem(new MenuItem("Add a student",          () -> addStudent()));
+        menu.addMenuItem(new MenuItem("Exit",                   () -> endApp()));
     }
 
     public void static main(String[] args)
     {
+        Main main = new Main();
+        main.mdi();
+    }
+
+    private void mdi()
+    {
+        while(running)
+        {
+            try
+            {
+                System.out.println(output);
+                System.out.println(menu);
+
+                Int command = Menu.getInt("Selection? ");
+
+                if(command == null)
+                {
+                    continue;
+                }
+                menu.run(command);
+            }
+            catch(Exception e)
+            {
+                System.out.println("Invalid command.");
+            }
+
+        }
 
     }
 
-    private mdi()
+    private void endApp()
     {
-
-    }
-
-    private endApp()
-    {
-
+        running = false;
     }
 }
