@@ -10,26 +10,28 @@ public class Main
     private Menu menu;
     private boolean running;
 
-    private void addStudent()
+    private void addStudent()//7
     {
         String name = Menu.getString("Student name? ");
         int id = Menu.getInt("Student ID? ");
         String email = Menu.getString("Student email? ");
         String account = Menu.getString("(a)lacarte or (u)nlimited? ");
         boolean isUnlimited = account.equals("u");
-        
-        Student student = new Student(name, id, email, isUnlimited);
+
+        Student student = new Student(name, id, email, isUnlimited);        
         moes.addStudent(student);
         
-        output = "Added student " + student + "(" + id + email + account + ")";
+        output = "\n---------------------------------------------------------------------------------\n\n" + 
+                 " ADDED STUDENT: " + student +
+                 "\n\n---------------------------------------------------------------------------------\n";
     }
 
-    private void listStudents()
+    private void listStudents()//6
     {
         output = moes.getStudentList();
     }
 
-    private void addMedia()
+    private void addMedia()//5
     {
         String title = Menu.getString("Title? ");
         String url = Menu.getString("URL? ");
@@ -38,30 +40,41 @@ public class Main
         Media media = new Media(title, url, points);
         moes.addMedia(media);
         
-        output = "Added media " + title + "(" + url + points + "points" + ")";
+        output = "\n---------------------------------------------------------------------------------\n\n" + 
+                 " ADDED MEDIA: " + title + " (" + url + ", " + points + " points" + ")" +
+                 "\n\n---------------------------------------------------------------------------------\n";
     }
 
-    private void playMedia()
+    private void playMedia()//1
     {
+        listStudents();
+        System.out.println(output);
+        
         int studentIndex = Menu.getInt("Student number? ");
+        
+        listMedia();
+        System.out.println(output);
+        
         int mediaIndex = Menu.getInt("Media number? ");
 
-        output = moes.playMedia(studentIndex, mediaIndex);
+        output = "\n---------------------------------------------------------------------------------\n\n" + 
+                  moes.playMedia(studentIndex, mediaIndex) +
+                  "\n\n---------------------------------------------------------------------------------\n";;
     }
 
-    private void listMedia()
+    private void listMedia()//2
     {
         output = moes.getMediaList();
     }
 
-    private void listAvailablePoints()
+    private void listAvailablePoints()//3
     {
         int studentIndex = Menu.getInt("Student number? ");
 
         output = "Number of points you have: " + moes.getPoints(studentIndex);
     }
 
-    private void buyPoints()
+    private void buyPoints()//4
     {
         int studentIndex = Menu.getInt("Student number? ");
         int totalPoints = moes.getPoints(studentIndex);
@@ -107,6 +120,7 @@ public class Main
             try
             {
                 System.out.println(output);
+                output = "";
                 System.out.println(menu);
 
                 int command = Menu.getInt("Selection? ");
@@ -121,9 +135,7 @@ public class Main
             {
                 System.out.println("Invalid command.");
             }
-
         }
-
     }
 
     private void endApp()

@@ -79,7 +79,7 @@ public class Menu
             }
             catch(Exception e)
             {
-                System.err.println("Invalid input! Try again.");
+                System.err.println("\nInvalid input! Try again.\n");
             }
         }
         return i;
