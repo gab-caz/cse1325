@@ -35,7 +35,7 @@ public class Main
         String url = Menu.getString("URL? ");
         int points = Menu.getInt("Points? ");
         
-        Media media = new Media(title, url);
+        Media media = new Media(title, url, points);
         moes.addMedia(media);
         
         output = "Added media " + title + "(" + url + points + "points" + ")";
@@ -79,22 +79,22 @@ public class Main
 
     public Main()
     {
-        this.moes = moes;
-        this.output = output;
-        this.menu = menu;
-        this.running = running;
+        this.moes = new Moes();
+        this.output = "";
+        this.menu = new Menu();
+        this.running = true;
 
+        menu.addMenuItem(new MenuItem("Exit\n",                   () -> endApp()));
         menu.addMenuItem(new MenuItem("Play media",             () -> playMedia()));
         menu.addMenuItem(new MenuItem("List media",             () -> listMedia()));
         menu.addMenuItem(new MenuItem("List available points",  () -> listAvailablePoints()));
         menu.addMenuItem(new MenuItem("Buy points",             () -> buyPoints()));
-        menu.addMenuItem(new MenuItem("Add media",              () -> addMedia()));
+        menu.addMenuItem(new MenuItem("Add media\n",              () -> addMedia()));
         menu.addMenuItem(new MenuItem("List all students",      () -> listStudents()));
         menu.addMenuItem(new MenuItem("Add a student",          () -> addStudent()));
-        menu.addMenuItem(new MenuItem("Exit",                   () -> endApp()));
     }
 
-    public void static main(String[] args)
+    public static void main(String[] args)
     {
         Main main = new Main();
         main.mdi();
@@ -109,9 +109,9 @@ public class Main
                 System.out.println(output);
                 System.out.println(menu);
 
-                Int command = Menu.getInt("Selection? ");
+                int command = Menu.getInt("Selection? ");
 
-                if(command == null)
+                if(command < 0)
                 {
                     continue;
                 }

@@ -58,9 +58,9 @@ public class Menu
         return s;
     }
 
-    public static String getString(String prompt, String cancelInput)
+    public static String getString(String prompt)
     {
-        return getString(prompt, cancelInput, null);
+        return getString(prompt, null, null);
     }
 
     public static Integer getInt(String prompt, String cancelInput, String defaultInput)
@@ -85,8 +85,8 @@ public class Menu
         return i;
     }
 
-    public static Integer getInt(String prompt, String cancelInput)
+    public static Integer getInt(String prompt)
     {
-        return getInt(prompt, cancelInput, null);
+        return getInt(prompt, null, null);
     }
 }
