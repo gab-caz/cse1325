@@ -75,11 +75,13 @@ public class Moes
         {
             Alacarte alaAccount = (Alacarte) account;
             alaAccount.buyPoints(points);
-            return "Updated points after purchase: " + alaAccount.getPointsRemaining();
+            return "You now have " + alaAccount.getPointsRemaining() + " points!" + 
+                   "\n\n---------------------------------------------------------------------------------\n\n";
         }
         else if(account instanceof Unlimited)
         {
-            return "You now have an unlimited account and need no additional points.";
+            return "You now have an unlimited account and need no additional points." +
+                   "\n\n---------------------------------------------------------------------------------\n\n";;
         }
         else
         {

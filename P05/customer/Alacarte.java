@@ -28,11 +28,11 @@ public class Alacarte extends Account
         if(pointsRemaining >= requiredPoints)
         {
             pointsRemaining -= requiredPoints;
-            return "Playing" + media;
+            return " PLAYING: " + media;
         }
         else
         {
-            return "Buy more points: Requires " + requiredPoints + " points, you have " + pointsRemaining;
+            return "Uh oh! Not enough points! You currently have " + pointsRemaining + " points." + "\nYou need " + requiredPoints + " points.";
         }
     }
 }

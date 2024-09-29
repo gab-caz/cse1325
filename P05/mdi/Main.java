@@ -28,7 +28,9 @@ public class Main
 
     private void listStudents()//6
     {
-        output = moes.getStudentList();
+        output = "\n---------------------------------------------------------------------------------\n\n" +
+                 " >>>STUDENT LIST<<<\n\n" + moes.getStudentList() +
+                 "\n---------------------------------------------------------------------------------\n";
     }
 
     private void addMedia()//5
@@ -54,35 +56,44 @@ public class Main
         
         listMedia();
         System.out.println(output);
-        
+
         int mediaIndex = Menu.getInt("Media number? ");
 
         output = "\n---------------------------------------------------------------------------------\n\n" + 
                   moes.playMedia(studentIndex, mediaIndex) +
-                  "\n\n---------------------------------------------------------------------------------\n";;
+                  "\n\n---------------------------------------------------------------------------------\n";
     }
 
     private void listMedia()//2
     {
-        output = moes.getMediaList();
+        output = "\n---------------------------------------------------------------------------------\n\n" +
+                 " >>>MEDIA LIST<<<\n\n" + moes.getMediaList() +
+                 "\n---------------------------------------------------------------------------------\n";
     }
 
     private void listAvailablePoints()//3
     {
+        listStudents();
+        System.out.println(output);
         int studentIndex = Menu.getInt("Student number? ");
 
-        output = "Number of points you have: " + moes.getPoints(studentIndex);
+        output = "\n---------------------------------------------------------------------------------\n\n" +
+                 "You currently have" + moes.getPoints(studentIndex) + " points." +
+                 "\n\n---------------------------------------------------------------------------------\n";
     }
 
     private void buyPoints()//4
     {
+        listStudents();
+        System.out.println(output);
         int studentIndex = Menu.getInt("Student number? ");
+
         int totalPoints = moes.getPoints(studentIndex);
-        int addPoints = Menu.getInt("How many additional points would you like to buy? ");
+        int addPoints = Menu.getInt("How many points would you like to buy? ");
 
         if(addPoints < 0)
         {
-            output = "No purchasing negative points!";
+            output = "You can NOT purchase negative points. Try again.";
         }
         else
         {
@@ -97,12 +108,12 @@ public class Main
         this.menu = new Menu();
         this.running = true;
 
-        menu.addMenuItem(new MenuItem("Exit\n",                   () -> endApp()));
+        menu.addMenuItem(new MenuItem("Exit\n",                 () -> endApp()));
         menu.addMenuItem(new MenuItem("Play media",             () -> playMedia()));
         menu.addMenuItem(new MenuItem("List media",             () -> listMedia()));
         menu.addMenuItem(new MenuItem("List available points",  () -> listAvailablePoints()));
         menu.addMenuItem(new MenuItem("Buy points",             () -> buyPoints()));
-        menu.addMenuItem(new MenuItem("Add media\n",              () -> addMedia()));
+        menu.addMenuItem(new MenuItem("Add media\n",            () -> addMedia()));
         menu.addMenuItem(new MenuItem("List all students",      () -> listStudents()));
         menu.addMenuItem(new MenuItem("Add a student",          () -> addStudent()));
     }
@@ -110,6 +121,7 @@ public class Main
     public static void main(String[] args)
     {
         Main main = new Main();
+        main.TitleGraphic();
         main.mdi();
     }
 
@@ -133,7 +145,7 @@ public class Main
             }
             catch(Exception e)
             {
-                System.out.println("Invalid command.");
+                System.out.println("Invalid command. Try again.");
             }
         }
     }
@@ -141,5 +153,17 @@ public class Main
     private void endApp()
     {
         running = false;
+    }
+
+    private void TitleGraphic()
+    {
+        System.out.println("\n\n(\\___/)                                            /\\_/\\\n" +
+                           "(0 x 0)           <<*---C(^-^)D---*>>             (=o.o=) \n" +
+                           "C(\")(\")                                           (\")(\")_/\n" +
+                           "~~,~~,~~,~~,~~,~~,~~,~~,~~,~~,~~,~~,~~,~~,~~,~~,~~,~~,~~,~~\n" +
+                           "                     WELCOME TO\n" +
+                           "        Mavs Online Entertainment System (MOES)\n\n" +
+                           "        Version 0.3\n        Gabriela Cazares\n        2024\n" +
+                           "~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~\n");
     }
 }
