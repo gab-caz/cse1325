@@ -78,7 +78,7 @@ public class Main
         int studentIndex = Menu.getInt("Student number? ");
 
         output = "\n---------------------------------------------------------------------------------\n\n" +
-                 "You currently have" + moes.getPoints(studentIndex) + " points." +
+                 "You currently have " + moes.getPoints(studentIndex) + " points." +
                  "\n\n---------------------------------------------------------------------------------\n";
     }
 

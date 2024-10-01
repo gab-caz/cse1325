@@ -81,7 +81,7 @@ public class Moes
         else if(account instanceof Unlimited)
         {
             return "You now have an unlimited account and need no additional points." +
-                   "\n\n---------------------------------------------------------------------------------\n\n";;
+                   "\n\n---------------------------------------------------------------------------------\n\n";
         }
         else
         {
