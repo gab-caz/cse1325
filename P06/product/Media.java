@@ -51,10 +51,10 @@ public class Media
     {
         this.title = br.readLine();
         this.url = br.readLine();
-        this.points = br.readLine();
+        this.points = Integer.parseInt(br.readLine());
     }
 
-    public save(BufferedWriter bw) throws IOException//NEW
+    public void save(BufferedWriter bw) throws IOException//NEW
     {
         bw.write("" + title   + '\n');
         bw.write("" + url     + '\n');
