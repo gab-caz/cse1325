@@ -1,7 +1,8 @@
 package mdi;
-import moes.Moes;
-import product.Media;
-import customer.Student;
+
+//import moes.Moes;
+//import product.Media;
+//import customer.Student;
 
 public class Main
 {
@@ -9,6 +10,68 @@ public class Main
     private String output;
     private Menu menu;
     private boolean running;
+
+    private static final String extension;
+    private static final String magicCookie;
+    private static final String fileVersion;
+    private String filename;
+
+    private newMoes()
+    {
+
+    }
+
+    private void save()
+    {
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(filename)))
+        {
+            moes.save(bw);
+            System.out.println("Wrote to " + filename);
+        }
+        catch(Exception e)
+        {
+            System.err.println("ERROR! Failed to save: " + e);
+        }
+    }
+
+    private void saveAs()
+    {
+        System.out.println("Current filename: " + filename);
+        System.out.println("Enter a new filename to save: ");
+        
+        String s = in.nextLine();
+        
+        if(s.isEmpty())
+        {
+            return;
+        }
+        
+        filename = s;
+        save();
+    }
+
+    private void open()
+    {
+        System.out.println("Current filename: " + filename);
+        System.out.println("Enter a new filename to open: ");
+        
+        String s = in.nextLine();
+
+        if(!s.isEmpty())
+        {
+            filename = s;
+        }
+
+        try(BufferedReader br = new BufferedReader(new FileReader(filename)))
+        {
+            
+
+        }
+        catch(Exception e)
+        {
+            System.err.println("ERROR! Failed to read: " + e);
+        }
+    }
 
     private void addStudent()//7
     {
