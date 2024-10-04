@@ -1,8 +1,15 @@
 package mdi;
 
-//import moes.Moes;
-//import product.Media;
-//import customer.Student;
+import moes.Moes;
+import product.Media;
+import customer.Student;
+
+import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.FileWriter;
+import java.io.FileReader;
 
 public class Main
 {
@@ -11,17 +18,23 @@ public class Main
     private Menu menu;
     private boolean running;
 
+    private static Scanner in = new Scanner(System.in);
+
     private static final String extension = ".moes";
     private static final String magicCookie = "M@g!C c00k!E";
-    private static final String fileVersion "1.0";
-    private String filename;
+    private static final String fileVersion = "1.0";
+    
+    private static final String DEFAULT_NAME = "Untitled" + extension;
+    private String filename = DEFAULT_NAME;//I wanted my header to correspond with the correct filenames, that's what this is.
 
-    private newMoes()
+    private void newMoes()//8
     {
         this.moes = new Moes();
+        filename = DEFAULT_NAME;
+        printHeader();
     }
 
-    private void save()
+    private void save()//10
     {
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(filename)))
         {
@@ -31,7 +44,7 @@ public class Main
             bw.newLine();
 
             moes.save(bw);
-            System.out.println("Wrote to " + filename);
+            System.out.println("\nSuccessfully wrote to " + filename);
         }
         catch(Exception e)
         {
@@ -39,45 +52,46 @@ public class Main
         }
     }
 
-    private void saveAs()
+    private void saveAs()//11
     {
         System.out.println("Current filename: " + filename);
-        System.out.println("Enter a new filename to save: ");
+        System.out.print("Enter a new filename to save: ");
         
-        String s = in.nextLine();
+        String newFileName = in.nextLine();
         
-        if(s.isEmpty())
+        if(newFileName.isEmpty())
         {
             return;
         }
 
-        if(!s.endsWith(extension))
+        if(!newFileName.endsWith(extension))
         {
-            s += extension;
+            newFileName += extension;
         }
         
-        filename = s;
+        filename = newFileName;
         save();
+        printHeader();
     }
 
-    private void open()
+    private void open()//9
     {
         System.out.println("Current filename: " + filename);
-        System.out.println("Enter a new filename to open: ");
+        System.out.print("Open from filename (press Enter to cancel): ");
         
-        String s = in.nextLine();
+        String givenFile = in.nextLine();
 
-        if(s.isEmpty())
+        if(givenFile.isEmpty())
         {
             return;
         }
 
-        if(!s.endsWith(extension))
+        if(!givenFile.endsWith(extension))
         {
-            s += extension;
+            givenFile += extension;
         }
 
-        try(BufferedReader br = new BufferedReader(new FileReader(s)))
+        try(BufferedReader br = new BufferedReader(new FileReader(givenFile)))
         {
             String magic = br.readLine();
             String version = br.readLine();
@@ -87,13 +101,14 @@ public class Main
                 throw new IOException("ERROR! Missing magic cookie and file version info.");
             }
 
-            moes = new Moes(br);
-            filename = s;
-
+            Moes newMoes = new Moes(br);
+            moes = newMoes;
+            filename = givenFile;
+            printHeader();
         }
         catch(Exception e)
         {
-            System.err.println("ERROR! Failed to open: " + e);
+            System.err.println("ERROR! Failed to open: " + e.getMessage());
         }
     }
 
@@ -108,16 +123,16 @@ public class Main
         Student student = new Student(name, id, email, isUnlimited);        
         moes.addStudent(student);
         
-        output = "\n---------------------------------------------------------------------------------\n\n" + 
+        output = "\n-----------------------------------------------------------\n\n" + 
                  " ADDED STUDENT: " + student +
-                 "\n\n---------------------------------------------------------------------------------\n";
+                 "\n\n-----------------------------------------------------------\n";
     }
 
     private void listStudents()//6
     {
-        output = "\n---------------------------------------------------------------------------------\n\n" +
+        output = "\n-----------------------------------------------------------\n\n" +
                  " >>>STUDENT LIST<<<\n\n" + moes.getStudentList() +
-                 "\n---------------------------------------------------------------------------------\n";
+                 "\n-----------------------------------------------------------\n";
     }
 
     private void addMedia()//5
@@ -129,9 +144,9 @@ public class Main
         Media media = new Media(title, url, points);
         moes.addMedia(media);
         
-        output = "\n---------------------------------------------------------------------------------\n\n" + 
+        output = "\n-----------------------------------------------------------\n\n" + 
                  " ADDED MEDIA: " + title + " (" + url + ", " + points + " points" + ")" +
-                 "\n\n---------------------------------------------------------------------------------\n";
+                 "\n\n-----------------------------------------------------------\n";
     }
 
     private void playMedia()//1
@@ -146,16 +161,16 @@ public class Main
 
         int mediaIndex = Menu.getInt("Media number? ");
 
-        output = "\n---------------------------------------------------------------------------------\n\n" + 
+        output = "\n-----------------------------------------------------------\n\n" + 
                   moes.playMedia(studentIndex, mediaIndex) +
-                  "\n\n---------------------------------------------------------------------------------\n";
+                  "\n\n-----------------------------------------------------------\n";
     }
 
     private void listMedia()//2
     {
-        output = "\n---------------------------------------------------------------------------------\n\n" +
+        output = "\n-----------------------------------------------------------\n\n" +
                  " >>>MEDIA LIST<<<\n\n" + moes.getMediaList() +
-                 "\n---------------------------------------------------------------------------------\n";
+                 "\n-----------------------------------------------------------\n";
     }
 
     private void listAvailablePoints()//3
@@ -164,9 +179,9 @@ public class Main
         System.out.println(output);
         int studentIndex = Menu.getInt("Student number? ");
 
-        output = "\n---------------------------------------------------------------------------------\n\n" +
+        output = "\n-----------------------------------------------------------\n\n" +
                  "You currently have " + moes.getPoints(studentIndex) + " points." +
-                 "\n\n---------------------------------------------------------------------------------\n";
+                 "\n\n-----------------------------------------------------------\n";
     }
 
     private void buyPoints()//4
@@ -195,20 +210,30 @@ public class Main
         this.menu = new Menu();
         this.running = true;
 
+        //System.out.println("\nHello!\nYou are currently working under this file: " + filename);
+
         menu.addMenuItem(new MenuItem("Exit\n",                 () -> endApp()));
+        
         menu.addMenuItem(new MenuItem("Play media",             () -> playMedia()));
         menu.addMenuItem(new MenuItem("List media",             () -> listMedia()));
         menu.addMenuItem(new MenuItem("List available points",  () -> listAvailablePoints()));
         menu.addMenuItem(new MenuItem("Buy points",             () -> buyPoints()));
         menu.addMenuItem(new MenuItem("Add media\n",            () -> addMedia()));
+        
         menu.addMenuItem(new MenuItem("List all students",      () -> listStudents()));
-        menu.addMenuItem(new MenuItem("Add a student",          () -> addStudent()));
+        menu.addMenuItem(new MenuItem("Add a student\n",          () -> addStudent()));
+        
+        menu.addMenuItem(new MenuItem("New MOES file",        () -> newMoes()));
+        menu.addMenuItem(new MenuItem("Open file",            () -> open()));
+        menu.addMenuItem(new MenuItem("Save to file",         () -> save()));
+        menu.addMenuItem(new MenuItem("Save as new file",     () -> saveAs()));
     }
 
     public static void main(String[] args)
     {
         Main main = new Main();
         main.TitleGraphic();
+        main.printHeader();
         main.mdi();
     }
 
@@ -244,13 +269,21 @@ public class Main
 
     private void TitleGraphic()
     {
-        System.out.println("\n\n(\\___/)                                            /\\_/\\\n" +
+        System.out.println("\n___________________________________________________________\n" +
+                           "(\\___/)                                            /\\_/\\\n" +
                            "(0 x 0)           <<*---C(^-^)D---*>>             (=o.o=) \n" +
                            "C(\")(\")                                           (\")(\")_/\n" +
                            "~~,~~,~~,~~,~~,~~,~~,~~,~~,~~,~~,~~,~~,~~,~~,~~,~~,~~,~~,~~\n" +
                            "                     WELCOME TO\n" +
                            "        Mavs Online Entertainment System (MOES)\n\n" +
-                           "        Version 0.3\n        Gabriela Cazares\n        2024\n" +
+                           "        Version 0.4\n        Gabriela Cazares\n        2024\n" +
                            "~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~\n");
+    }
+
+    private void printHeader()
+    {
+        System.out.println("\n___________________________________________________________" +
+                           "\n\nYou are currently working under this file: " + filename +
+                           "\n___________________________________________________________\n");
     }
 }
