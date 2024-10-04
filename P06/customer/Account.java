@@ -11,6 +11,17 @@ public abstract class Account
         this.accountNumber = nextAccountNumber++;
     }
 
+    public Account(BufferedReader br) throws IOException//NEW
+    {
+        this.accountNumber = Integer.parseInt(br.readLine());
+    }
+
+    public void save(BufferedWriter bw) throws IOException//NEW
+    {
+        bw.write("" + accountNumber     + '\n');
+        bw.write("" + nextAccountNumber + '\n');
+    }
+
     public int getAccountNumber()
     {
         return accountNumber;
