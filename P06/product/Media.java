@@ -2,6 +2,9 @@ package product;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
 
 /**
  * Class Media holds the given media title, its URL, and the points needed to play the media.
@@ -42,6 +45,20 @@ public class Media
         this.url = url;
 
         this.points = points;
+    }
+
+    public Media(BufferedReader br) throws IOException//NEW
+    {
+        this.title = br.readLine();
+        this.url = br.readLine();
+        this.points = br.readLine();
+    }
+
+    public save(BufferedWriter bw) throws IOException//NEW
+    {
+        bw.write("" + title   + '\n');
+        bw.write("" + url     + '\n');
+        bw.write("" + points  + '\n');
     }
 
     /**
