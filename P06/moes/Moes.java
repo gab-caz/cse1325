@@ -7,11 +7,57 @@ import customer.Alacarte;
 import customer.Unlimited;
 
 import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
 
 public class Moes
 {
     private ArrayList<Media> library = new ArrayList<>();
     private ArrayList<Student> customers = new ArrayList<>();
+
+    public Moes()//NEW
+    {
+
+    }
+    
+    public Moes(BufferedReader br) throws IOException//NEW
+    {
+        int size = Integer.parseInt(br.readLine());
+        library = new ArrayList<>();
+        
+        for(int i = 0; i < size; i++)
+        {
+            Media media = new Media(br);
+            library.add(media);
+        }
+
+        size = Integer.parseInt(br.readLine());
+        customers = new ArrayList<>();
+        
+        for(int i = 0; i < size; i++)
+        {
+            Student student = new Student(br);
+            customers.add(student);
+        }
+    }
+
+    public void save(BufferedWriter bw) throws IOException//NEW
+    {
+        bw.write("" + library.size() + '\n');
+        
+        for(Media media : library)
+        {
+            media.save(bw);
+        }
+        
+        bw.write("" + customers.size() + '\n');
+        
+        for(Student student : customers)
+        {
+            student.save(bw);
+        }
+    }
 
     public void addMedia(Media media)
     {
@@ -81,7 +127,7 @@ public class Moes
         }
         else if(account instanceof Unlimited)
         {
-            return "You now have an unlimited account and need no additional points." +
+            return "You have an unlimited account and need no additional points." +
                    "\n\n---------------------------------------------------------------------------------\n\n";
         }
         else
