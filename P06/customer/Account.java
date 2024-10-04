@@ -1,5 +1,9 @@
 package customer;
+
 import product.Media;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
 
 public abstract class Account
 {
@@ -14,6 +18,7 @@ public abstract class Account
     public Account(BufferedReader br) throws IOException//NEW
     {
         this.accountNumber = Integer.parseInt(br.readLine());
+        nextAccountNumber = Integer.parseInt(br.readLine());
     }
 
     public void save(BufferedWriter bw) throws IOException//NEW
