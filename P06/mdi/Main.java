@@ -11,20 +11,25 @@ public class Main
     private Menu menu;
     private boolean running;
 
-    private static final String extension;
-    private static final String magicCookie;
-    private static final String fileVersion;
+    private static final String extension = ".moes";
+    private static final String magicCookie = "M@g!C c00k!E";
+    private static final String fileVersion "1.0";
     private String filename;
 
     private newMoes()
     {
-
+        this.moes = new Moes();
     }
 
     private void save()
     {
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(filename)))
         {
+            bw.write(magicCookie);
+            bw.newLine();
+            bw.write(fileVersion);
+            bw.newLine();
+
             moes.save(bw);
             System.out.println("Wrote to " + filename);
         }
@@ -45,6 +50,11 @@ public class Main
         {
             return;
         }
+
+        if(!s.endsWith(extension))
+        {
+            s += extension;
+        }
         
         filename = s;
         save();
@@ -57,19 +67,33 @@ public class Main
         
         String s = in.nextLine();
 
-        if(!s.isEmpty())
+        if(s.isEmpty())
         {
-            filename = s;
+            return;
         }
 
-        try(BufferedReader br = new BufferedReader(new FileReader(filename)))
+        if(!s.endsWith(extension))
         {
-            
+            s += extension;
+        }
+
+        try(BufferedReader br = new BufferedReader(new FileReader(s)))
+        {
+            String magic = br.readLine();
+            String version = br.readLine();
+
+            if(!magicCookie.equals(magic) || !fileVersion.equals(version))
+            {
+                throw new IOException("ERROR! Missing magic cookie and file version info.");
+            }
+
+            moes = new Moes(br);
+            filename = s;
 
         }
         catch(Exception e)
         {
-            System.err.println("ERROR! Failed to read: " + e);
+            System.err.println("ERROR! Failed to open: " + e);
         }
     }
 
