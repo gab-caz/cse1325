@@ -98,7 +98,7 @@ public class Main
 
             if(!magicCookie.equals(magic) || !fileVersion.equals(version))
             {
-                throw new IOException("ERROR! Missing magic cookie and file version info.");
+                throw new IOException("ERROR! Invalid file format: Missing magic cookie and file version info.");
             }
 
             Moes newMoes = new Moes(br);
@@ -106,9 +106,13 @@ public class Main
             filename = givenFile;
             printHeader();
         }
+        catch(IOException e)
+        {
+            System.err.println("ERROR! Failed to open file: " + e.getMessage());
+        }
         catch(Exception e)
         {
-            System.err.println("ERROR! Failed to open: " + e.getMessage());
+            System.err.println("ERROR! Failed to reconstruct Moes object : " + e.getMessage());
         }
     }
 
