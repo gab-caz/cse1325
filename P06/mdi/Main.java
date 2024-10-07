@@ -166,8 +166,25 @@ public class Main
     private void addMedia()//5
     {
         String title = Menu.getString("Title? ");
+        if(title.isEmpty())
+        {
+            System.out.println("Cancelled add media.");
+            return;
+        }
+
         String url = Menu.getString("URL? ");
-        int points = Menu.getInt("Points? ");
+        if(url.isEmpty())
+        {
+            System.out.println("Cancelled add media.");
+            return;
+        }
+
+        Integer points = Menu.getInt("Points? ");
+        if(points == null)
+        {
+            System.out.println("Cancelled add media.");
+            return;
+        }
         
         Media media = new Media(title, url, points);
         moes.addMedia(media);
