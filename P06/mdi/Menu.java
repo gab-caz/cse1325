@@ -71,7 +71,11 @@ public class Menu
             try 
             {
                 String s = getString(prompt, cancelInput, defaultInput);
-                if(s != null && !s.isEmpty())
+                if(s == null)
+                {
+                    return -1;
+                }
+                if(!s.isEmpty())
                 {
                     i = Integer.parseInt(s);
                 }

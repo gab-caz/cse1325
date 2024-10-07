@@ -118,10 +118,34 @@ public class Main
 
     private void addStudent()//7
     {
-        String name = Menu.getString("Student name? ");
-        int id = Menu.getInt("Student ID? ");
+        String name = Menu.getString("Student name? "); 
+        if(name.isEmpty())
+        {
+            System.out.println("Cancelled add student.");
+            return;
+        }
+        
+        Integer id = Menu.getInt("Student ID? ");
+        if(id == null)
+        {
+            System.out.println("Cancelled add student.");
+            return;
+        }
+        
         String email = Menu.getString("Student email? ");
+        if(email.isEmpty())
+        {
+            System.out.println("Cancelled add student.");
+            return;
+        }
+        
         String account = Menu.getString("(a)lacarte or (u)nlimited? ");
+        if(account.isEmpty())
+        {
+            System.out.println("Cancelled add student.");
+            return;
+        }
+        
         boolean isUnlimited = account.equals("u");
 
         Student student = new Student(name, id, email, isUnlimited);        
@@ -261,7 +285,7 @@ public class Main
             }
             catch(Exception e)
             {
-                System.out.println("Invalid command. Try again.");
+                System.out.println("Invalid command:\n" + e);
             }
         }
     }
