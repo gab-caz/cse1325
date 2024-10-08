@@ -401,13 +401,11 @@ public class Main
 
         switch(userInput)
         {
-            case "A" -> {save();      return;}
-            case "B" -> {saveAs();    return;}
-            case "C" -> {return;}
-            case "D" -> {return;}
+            case "A" -> {save();}
+            case "B" -> {saveAs();}
+            case "C" -> {System.out.println("Changes discarded.\n");    return;}
+            case "D" -> {System.out.println("Canceled. Continue as normal.");}
             default -> {System.out.println("Must choose A, B, C, or D.");      dirty();}
         }
-
-        dirty = false;
     }
 }
