@@ -389,7 +389,7 @@ public class Main
 
     private void dirty()
     {
-        System.out.println("\n===========================================================\n" +
+        System.out.println("\n===========================================================\n\n" +
                            " Unsaved data detected. Would you like to...\n" +
                            " A] Save to the current file\n" +
                            " B] Save to a new file\n" +
@@ -397,19 +397,17 @@ public class Main
                            " D] Cancel\n" +
                            "\n===========================================================\n");
 
-        String userInput = scanner.nextLine().toUpperCase();
+        String userInput = in.nextLine().toUpperCase();
 
         switch(userInput)
         {
-            case "A" -> save();
-            case "B" -> saveAs();
-            case "C" -> 
-            case "D" -> return;
-            default -> { 
-                            System.out.println("Must choose A, B, C, or D.");
-                            dirty();
-                        }
+            case "A" -> {save();      return;}
+            case "B" -> {saveAs();    return;}
+            case "C" -> {return;}
+            case "D" -> {return;}
+            default -> {System.out.println("Must choose A, B, C, or D.");      dirty();}
         }
 
         dirty = false;
+    }
 }
