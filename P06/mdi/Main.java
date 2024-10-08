@@ -17,6 +17,7 @@ public class Main
     private String output;
     private Menu menu;
     private boolean running;
+    private boolean dirty = false;//bonus
 
     private static Scanner in = new Scanner(System.in);
 
@@ -29,9 +30,16 @@ public class Main
 
     private void newMoes()//8
     {
+        if(dirty)//bonus
+        {
+            dirty();
+        }
+
         this.moes = new Moes();
         filename = DEFAULT_NAME;
         printHeader();
+
+        dirty = false;//bonus
     }
 
     private void save()//10
@@ -50,6 +58,8 @@ public class Main
         {
             System.err.println("ERROR! Failed to save: " + e);
         }
+
+        dirty = false;//bonus
     }
 
     private void saveAs()//11
@@ -72,10 +82,17 @@ public class Main
         filename = newFileName;
         save();
         printHeader();
+
+        dirty = false;//bonus
     }
 
     private void open()//9
     {
+        if(dirty)//bonus
+        {
+            dirty();
+        }
+
         System.out.println("Current filename: " + filename);
         System.out.print("Open from filename (press Enter to cancel): ");
         
@@ -114,6 +131,8 @@ public class Main
         {
             System.err.println("ERROR! Failed to reconstruct Moes object : " + e.getMessage());
         }
+
+        dirty = false;//bonus
     }
 
     private void addStudent()//7
@@ -154,6 +173,8 @@ public class Main
         output = "\n-----------------------------------------------------------\n\n" + 
                  " ADDED STUDENT: " + student +
                  "\n\n-----------------------------------------------------------\n";
+        
+        dirty = true;//bonus
     }
 
     private void listStudents()//6
@@ -192,6 +213,8 @@ public class Main
         output = "\n-----------------------------------------------------------\n\n" + 
                  " ADDED MEDIA: " + title + " (" + url + ", " + points + " points" + ")" +
                  "\n\n-----------------------------------------------------------\n";
+        
+        dirty = true;//bonus
     }
 
     private void playMedia()//1
@@ -278,6 +301,8 @@ public class Main
         {
             output = moes.buyPoints(studentIndex, addPoints);
         }
+
+        dirty = true;//bonus
     }
 
     public Main()
@@ -286,8 +311,6 @@ public class Main
         this.output = "";
         this.menu = new Menu();
         this.running = true;
-
-        //System.out.println("\nHello!\nYou are currently working under this file: " + filename);
 
         menu.addMenuItem(new MenuItem("Exit\n",                 () -> endApp()));
         
@@ -362,5 +385,27 @@ public class Main
         System.out.println("\n___________________________________________________________" +
                            "\n\nYou are currently working under this file: " + filename +
                            "\n___________________________________________________________\n");
+    }
+
+    private void dirty()
+    {
+        System.out.println("\n===========================================================\n" +
+                           "Unsaved data detected. Would you like to...\n" +
+                           "A] Save to the current file\n" +
+                           "B] Save to a new file\n" +
+                           "C] Discard the changed data\n" +
+                           "D] Cancel\n" +
+                           "\n===========================================================\n");
+
+        String userInput = scanner.nextLine().toUpperCase();
+
+        switch(userInput)
+        {
+            case "A" ->
+            case "B" ->
+            case "C" ->
+            case "D" ->
+
+        }
     }
 }
