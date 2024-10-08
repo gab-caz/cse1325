@@ -196,10 +196,26 @@ public class Main
 
     private void playMedia()//1
     {
+        if(moes.getStudentList().isEmpty())
+        {
+            System.out.println("\n-----------------------------------------------------------\n\n" +
+                               " Nothing to display.\n In order to unlock [PLAY MEDIA], must add student(s) and media first.\n" +
+                               "\n-----------------------------------------------------------\n");
+            return;
+        }
+
         listStudents();
         System.out.println(output);
         
         int studentIndex = Menu.getInt("Student number? ");
+        
+        if(moes.getMediaList().isEmpty())
+        {
+            System.out.println("\n-----------------------------------------------------------\n\n" +
+                               " Empty media list. Add media first.\n" +
+                               "\n-----------------------------------------------------------\n");
+            return;
+        }
         
         listMedia();
         System.out.println(output);
@@ -220,6 +236,14 @@ public class Main
 
     private void listAvailablePoints()//3
     {
+        if(moes.getStudentList().isEmpty())
+        {
+            System.out.println("\n-----------------------------------------------------------\n\n" +
+                               " Nothing to display.\n Add student(s) first to check points.\n" +
+                               "\n-----------------------------------------------------------\n");
+            return;
+        }
+
         listStudents();
         System.out.println(output);
         int studentIndex = Menu.getInt("Student number? ");
@@ -231,6 +255,14 @@ public class Main
 
     private void buyPoints()//4
     {
+        if(moes.getStudentList().isEmpty())
+        {
+            System.out.println("\n-----------------------------------------------------------\n\n" +
+                               " In order to [BUY POINTS], must add student(s) first.\n" +
+                               "\n-----------------------------------------------------------\n");
+            return;
+        }
+
         listStudents();
         System.out.println(output);
         int studentIndex = Menu.getInt("Student number? ");
@@ -266,7 +298,7 @@ public class Main
         menu.addMenuItem(new MenuItem("Add media\n",            () -> addMedia()));
         
         menu.addMenuItem(new MenuItem("List all students",      () -> listStudents()));
-        menu.addMenuItem(new MenuItem("Add a student\n",          () -> addStudent()));
+        menu.addMenuItem(new MenuItem("Add a student\n",        () -> addStudent()));
         
         menu.addMenuItem(new MenuItem("New MOES file",        () -> newMoes()));
         menu.addMenuItem(new MenuItem("Open file",            () -> open()));
