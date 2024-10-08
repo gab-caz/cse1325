@@ -390,22 +390,26 @@ public class Main
     private void dirty()
     {
         System.out.println("\n===========================================================\n" +
-                           "Unsaved data detected. Would you like to...\n" +
-                           "A] Save to the current file\n" +
-                           "B] Save to a new file\n" +
-                           "C] Discard the changed data\n" +
-                           "D] Cancel\n" +
+                           " Unsaved data detected. Would you like to...\n" +
+                           " A] Save to the current file\n" +
+                           " B] Save to a new file\n" +
+                           " C] Discard the changed data\n" +
+                           " D] Cancel\n" +
                            "\n===========================================================\n");
 
         String userInput = scanner.nextLine().toUpperCase();
 
         switch(userInput)
         {
-            case "A" ->
-            case "B" ->
-            case "C" ->
-            case "D" ->
-
+            case "A" -> save();
+            case "B" -> saveAs();
+            case "C" -> 
+            case "D" -> return;
+            default -> { 
+                            System.out.println("Must choose A, B, C, or D.");
+                            dirty();
+                        }
         }
-    }
+
+        dirty = false;
 }
