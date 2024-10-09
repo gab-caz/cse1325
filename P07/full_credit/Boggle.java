@@ -23,6 +23,7 @@ public class Boggle
     private static String filename = "words.txt"; // default (this is the supplied file of 971 common words)
     private static int verbosity = 0;   // smaller ints mean less output - us 0 for timing
     
+
     // =========== WRITE AND INVOKE THIS METHOD FOR EACH THREAD ===========
     private static void solveRange(int first, int lastPlusOne, int threadNumber)
     {
@@ -32,6 +33,19 @@ public class Boggle
             synchronized(boards)
             {
                 board = boards.get(i);
+            }
+
+            Solver solver = new Solver(board, threadNumber, verbosity);
+            for(String word : words)
+            {
+                Solution solution = solver.solve(word);
+                if(solution != null)
+                {
+                    synchronized(solutions)
+                    {
+                        solutions.add(solution);
+                    }
+                }
             }
         }
     }
