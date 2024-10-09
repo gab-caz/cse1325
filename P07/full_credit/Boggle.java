@@ -11,7 +11,8 @@ import java.util.HashSet;
 
 import java.util.Objects;
 
-public class Boggle {
+public class Boggle
+{
     private static List<Board> boards = new ArrayList<>();
     private static List<String> words = new ArrayList<>();
     private static Set<Solution> solutions = new TreeSet<>();
@@ -23,15 +24,27 @@ public class Boggle {
     private static int verbosity = 0;   // smaller ints mean less output - us 0 for timing
     
     // =========== WRITE AND INVOKE THIS METHOD FOR EACH THREAD ===========
-    private static void solveRange(int first, int lastPlusOne, int threadNumber) {
+    private static void solveRange(int first, int lastPlusOne, int threadNumber)
+    {
+        for(int i = first; i < (lastPlusOne-1); i++)
+        {
+            Board board;
+            synchronized(boards)
+            {
+                board = boards.get(i);
+            }
+        }
     }
     // =========== END THREAD METHOD ===========
 
 
-    public static void main(String[] args) {
-        try {
+    public static void main(String[] args)
+    {
+        try
+        {
             // Offer standard help
-            if(args.length > 0 && args[0].equals("-h")) {
+            if(args.length > 0 && args[0].equals("-h"))
+            {
                 System.err.println(
                     """
                     usage: java Boggle [#boards] [boardSize] [#threads] [wordsFilename] [verboseLevel(0-3)]
@@ -42,34 +55,44 @@ public class Boggle {
             }
         
             // Parse the other command line arguments
-            try {
+            try
+            {
                 if(args.length > 0 && !args[0].equals("-")) numberOfBoards = Integer.parseInt(args[0]);
                 if(args.length > 1 && !args[1].equals("-")) boardSize = Integer.parseInt(args[1]);
                 if(args.length > 2 && !args[2].equals("-")) numThreads = Integer.parseInt(args[2]);
                 if(args.length > 3 && !args[3].equals("-")) filename = args[3];
                 if(args.length > 4 && !args[4].equals("-")) verbosity = Integer.parseInt(args[4]);
-           } catch(Exception e) {
-                    System.err.println("Invalid command line arguments: " + e);
-                    System.exit(-2);
-            }
+           }
+           catch(Exception e)
+           {
+                System.err.println("Invalid command line arguments: " + e);
+                System.exit(-2);
+           }
     
             // Generate random Boggle boards on which to search
-            try {
-                for(int i=0; i<numberOfBoards; ++i) {
+            try
+            {
+                for(int i=0; i<numberOfBoards; ++i)
+                {
                     boards.add(new Board(boardSize));
                     log("\nBoard " + i + "\n\n" + boards.get(i) + "\n\n", 2);
                 }
-            } catch(Exception e) {
-                    System.err.println("Unable to generate new Boggle boards: " + e);
-                    System.exit(-2);
+            }
+            catch(Exception e)
+            {
+                System.err.println("Unable to generate new Boggle boards: " + e);
+                System.exit(-2);
             }
             // System.exit(0);
         
             // Read the list of words to find on the Boggle Boards
             String s = null;
-            try(BufferedReader br = new BufferedReader(new FileReader(filename))) {
+            try(BufferedReader br = new BufferedReader(new FileReader(filename)))
+            {
                 while((s = br.readLine()) != null) words.add(s);
-            } catch(IOException e) {
+            }
+            catch(IOException e)
+            {
                 System.err.println("Unable to read words from file " + filename + ": " + e);
                 System.exit(-1);
             }
@@ -77,9 +100,11 @@ public class Boggle {
             // =========== CHANGE THIS BLOCK OF CODE TO ADD THREADING ===========
             // Find words on the Boggle boards, collecting the solutions in a TreeSet
             int threadNumber = 0; // This will be set to a unique int for each of your threads
-            for(Board board : boards) {
+            for(Board board : boards)
+            {
                 Solver solver = new Solver(board, threadNumber, verbosity);
-                for(String word : words) {
+                for(String word : words)
+                {
                     Solution solution = solver.solve(word);
                     if(solution != null) solutions.add(solution);
                 }
@@ -87,23 +112,25 @@ public class Boggle {
             // =========== END BLOCK OF CODE TO ADD THREADING ===========
 
             // Print all the solutions if requested
-            for(Solution solution : solutions) {
+            for(Solution solution : solutions)
+            {
                 log(solution.toString(), 2);
             }
 
             // Print the results. These should be EXACTLY the same regardless of # of threads
             System.out.println("\nFound " + solutions.size() + " solutions");
             System.out.printf("Hash is 0x%08X\n", Objects.hash(solutions));
-        } catch(Exception e) {
+        }
+        catch(Exception e)
+        {
             System.err.println("Unexpected exception (panic): Contact support");
             e.printStackTrace();
             System.exit(-99);
         }
     }
     // This implements the verbosity from Boggle, printing the debug message only if requested
-    private static void log(String s, int level) {
+    private static void log(String s, int level)
+    {
         if(verbosity == level) System.out.println(s);
     }
-    
-
 }
