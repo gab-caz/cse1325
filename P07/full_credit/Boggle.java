@@ -111,9 +111,27 @@ public class Boggle
                 System.exit(-1);
             }
             
+
             // =========== CHANGE THIS BLOCK OF CODE TO ADD THREADING ===========
             // Find words on the Boggle boards, collecting the solutions in a TreeSet
-            int threadNumber = 0; // This will be set to a unique int for each of your threads
+            List<Thread> threads = new ArrayList<>();
+
+            double divideBoards = (double)numberOfBoards/numThreads;
+
+            int threadNumber; // This will be set to a unique int for each of your threads
+            for(threadNumber = 0; threadNumber < (numThreads-1); threadNumber++)
+            {
+                final int first;
+                final int lastPlusOne;
+                final int threadNumber;
+            }
+
+
+
+
+
+
+
             for(Board board : boards)
             {
                 Solver solver = new Solver(board, threadNumber, verbosity);
@@ -123,7 +141,25 @@ public class Boggle
                     if(solution != null) solutions.add(solution);
                 }
             }
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             // =========== END BLOCK OF CODE TO ADD THREADING ===========
+
 
             // Print all the solutions if requested
             for(Solution solution : solutions)
