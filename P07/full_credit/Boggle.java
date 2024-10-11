@@ -27,6 +27,8 @@ public class Boggle
     // =========== WRITE AND INVOKE THIS METHOD FOR EACH THREAD ===========
     private static void solveRange(int first, int lastPlusOne, int threadNumber)
     {
+        log("T" + threadNumber + " R(" + first + "-" + lastPlusOne + ")", 1);
+
         for(int i = first; i < (lastPlusOne-1); i++)
         {
             Board board;
@@ -48,6 +50,8 @@ public class Boggle
                 }
             }
         }
+
+        log("T" + threadNumber + " exits", 1);
     }
     // =========== END THREAD METHOD ===========
 
@@ -119,27 +123,26 @@ public class Boggle
 
             final double divideBoards = (double)(numberOfBoards/numThreads);
 
-            for(int threadIndex = 0; threadIndex < (numThreads-1); threadIndex++)
+            for(int threadNumber = 0; threadNumber < (numThreads-1); threadNumber++)
             {
-                final int startBoard = (int)(threadIndex*divideBoards);
-                final int lastPlusOneBoard = (threadIndex == numThreads-1) ? numberOfBoards : (int)(threadIndex*divideBoards);
-                final int currentThread = threadIndex;
+                final int first = (int)(threadNumber*divideBoards);
+                final int lastPlusOne = (threadNumber == numThreads-1) ? numberOfBoards : (int)((threadNumber+1)*divideBoards);
+                final int threadNum = threadNumber;
 
-                System.out.println();
-
-                Thread t = new Thread(() -> solveRange(startBoard, lastPlusOneBoard, currentThread));
-                threads.add(t);
+                Thread t = new Thread(() -> solveRange(first, lastPlusOne, threadNum));
                 t.start();
+                threads.add(t);
             }
 
-            for(Thread thread : threads)
+            for(Thread t : threads)
             {
                 try
                 {
-                    thread.join();
+                    t.join();
                 }
                 catch(InterruptedException e)
                 {
+                    System.err.println("Abort: " + e);
                 }
             }
             // =========== END BLOCK OF CODE TO ADD THREADING ===========
