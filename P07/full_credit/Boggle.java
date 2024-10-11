@@ -121,9 +121,9 @@ public class Boggle
             // Find words on the Boggle boards, collecting the solutions in a TreeSet
             List<Thread> threads = new ArrayList<>();
 
-            final double divideBoards = (double)(numberOfBoards/numThreads);
+            double divideBoards = (numberOfBoards/numThreads);
 
-            for(int threadNumber = 0; threadNumber < (numThreads-1); threadNumber++)
+            for(int threadNumber = 0; threadNumber < (numThreads); threadNumber++)
             {
                 final int first = (int)(threadNumber*divideBoards);
                 final int lastPlusOne = (threadNumber == numThreads-1) ? numberOfBoards : (int)((threadNumber+1)*divideBoards);
