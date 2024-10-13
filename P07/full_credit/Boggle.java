@@ -27,7 +27,7 @@ public class Boggle
     // =========== WRITE AND INVOKE THIS METHOD FOR EACH THREAD ===========
     private static void solveRange(int first, int lastPlusOne, int threadNumber)
     {
-        log("T" + threadNumber + " R(" + first + "-" + lastPlusOne + ")", 1);
+        log("T" + threadNumber + " R(" + first + "-" + lastPlusOne- + ")", 1);
 
         for(int i = first; i < (lastPlusOne-1); i++)
         {
@@ -121,12 +121,12 @@ public class Boggle
             // Find words on the Boggle boards, collecting the solutions in a TreeSet
             List<Thread> threads = new ArrayList<>();
 
-            double divideBoards = (numberOfBoards/numThreads);
+            int divideBoards = (numberOfBoards/numThreads);
 
             for(int threadNumber = 0; threadNumber < (numThreads); threadNumber++)
             {
-                final int first = (int)(threadNumber*divideBoards);
-                final int lastPlusOne = (threadNumber == numThreads-1) ? numberOfBoards : (int)((threadNumber+1)*divideBoards);
+                final int first = (threadNumber*divideBoards);
+                final int lastPlusOne = (threadNumber == numThreads-1) ? numberOfBoards : (threadNumber+1)*divideBoards;
                 final int threadNum = threadNumber;
 
                 Thread t = new Thread(() -> solveRange(first, lastPlusOne, threadNum));
