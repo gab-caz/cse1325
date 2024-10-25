@@ -29,7 +29,16 @@ int main(int argc, char* argv[])
         }
 
         std::cout << "Numbers: " << std::endl;
-        std::cout << "Words: " << std::endl;
+        for(size_t i = 0; i < numbers.size(); ++i)
+        {
+            std::cout << numbers[i] << std::endl;
+        }
+
+        std::cout << "\nWords: " << std::endl;
+        for(size_t i = 0; i < words.size(); ++i)
+        {
+            std::cout << words[i] << std::endl;
+        }
     }
     catch(...)
     {
