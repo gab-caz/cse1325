@@ -29,6 +29,9 @@ int main(int argc, char* argv[])
         ++index;
     }
 
+    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+    std::shuffle(numbers.begin(), numbers.end(), std::default_random_engine(seed));
+    
     std::cout << "Numbers (shuffled): " << std::endl;
     
     for(size_t i = 0; i < numbers.size(); ++i)
