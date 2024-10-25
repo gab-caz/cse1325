@@ -2,6 +2,9 @@
 #include <vector>
 #include <string>
 #include <cctype>
+#include <algorithm>
+#include <random>
+#include <chrono>
 
 int main(int argc, char* argv[])
 {
@@ -27,12 +30,15 @@ int main(int argc, char* argv[])
     }
 
     std::cout << "Numbers (shuffled): " << std::endl;
+    
     for(size_t i = 0; i < numbers.size(); ++i)
     {
         std::cout << numbers[i] << std::endl;
     }
 
+    std::sort(words.begin(), words.end());
     std::cout << "\nWords (sorted): " << std::endl;
+    
     for(size_t i = 0; i < words.size(); ++i)
     {
         std::cout << words[i] << std::endl;
