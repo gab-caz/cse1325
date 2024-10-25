@@ -1,4 +1,7 @@
 #include <iostream>
+#include <vector>
+#include <string>
+#include <cctype>
 
 int main(int argc, char* argv[])
 {
@@ -7,18 +10,22 @@ int main(int argc, char* argv[])
         std::vector<std::string> numbers;
         std::vector<std::string> words;
 
+        int index = 0;
+
         while(index+1 < argc)
         {
-            std::string
+            std::string arg = argv[index+1];
 
-            if(isdigit)
+            if(std::isdigit(arg[0]))
             {
-                numbers
+                numbers.push_back(arg);
             }
             else
             {
-                words
+                words.push_back(arg);
             }
+
+            ++index;
         }
 
         std::cout << "Numbers: " << std::endl;
