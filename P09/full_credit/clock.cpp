@@ -25,10 +25,25 @@ virtual ~Clock()//empty
 
 void Clock::tic()
 {
+    _seconds++;
+
+    if(_seconds == 60)
+    {
+        _seconds = 0;
+        _minutes++;
+    }
+
+    if(_minutes == 60)
+    {
+        _hours++;
+        _hours = (0-23);
+    }
 
 }
 
-void print()
+void Clock::print()
 {
+    
+
 
 }
