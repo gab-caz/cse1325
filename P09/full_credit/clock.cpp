@@ -1,6 +1,7 @@
+#include <iostream>
 #include "clock.h"
 
-Clock::Clock(std::int hours, int minutes, int seconds) : _hours{hours}, _minutes{minutes}, _seconds{seconds}
+Clock::Clock(int hours, int minutes, int seconds) : _hours{hours}, _minutes{minutes}, _seconds{seconds}
 {
     if(hours < 0 || hours > 23)
     {
@@ -18,7 +19,7 @@ Clock::Clock(std::int hours, int minutes, int seconds) : _hours{hours}, _minutes
     }
 }
 
-virtual ~Clock()//empty
+CLock::~Clock()//empty
 {
 
 }
@@ -35,10 +36,14 @@ void Clock::tic()
 
     if(_minutes == 60)
     {
+        _minutes = 0;
         _hours++;
-        _hours = (0-23);
     }
 
+    if(_hours == 24)
+    {
+        _hours = 0;
+    }
 }
 
 void Clock::print()
