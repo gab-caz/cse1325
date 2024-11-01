@@ -1,4 +1,6 @@
 #include <iostream>
+#include <stdexcept>
+#include <string>
 #include "clock.h"
 
 int main(int argc, char** argv)
@@ -6,7 +8,7 @@ int main(int argc, char** argv)
     if(argc != 4)
     {
         std::cerr << "usage: clock <hour> <minutes> <seconds>" << std::endl;
-        exit(-1);
+        return -1;
     }
 
     try
@@ -20,12 +22,12 @@ int main(int argc, char** argv)
     catch(std::out_of_range e)
     {
         std::cerr << "Exception: " << e.what() << std::endl;
-        exit(-2);
+        return -2;
     }
 
     while(true)
     {
-        clock.print();
+        Clock.print();
 
         std::cout << "Enter 'q' to quit.";
         std::string input;
@@ -33,11 +35,13 @@ int main(int argc, char** argv)
 
         if(input == "q")
         {
-            exit();
+            return 0;
         }
         else
         {
-            clock.tic();
+            Clock.tic();
         }
     }
+
+    return 0;
 }

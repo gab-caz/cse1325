@@ -1,7 +1,7 @@
-#ifndef __CLOCK_H
-#define __CLOCK_H
+#ifndef CLOCK_H
+#define CLOCK_H
 
-#include <ostream>
+#include <iostream>
 
 class Clock
 {
