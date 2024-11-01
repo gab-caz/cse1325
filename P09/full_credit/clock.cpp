@@ -43,7 +43,7 @@ void Clock::tic()
 
 void Clock::print()
 {
-    
-
-
+    std::cout << std::setw(2) << std::setfill('0') << _hours << ":"
+              << std::setw(2) << std::setfill('0') << _minutes << ":"
+              << std::setw(2) << std::setfill('0') << _seconds << std::endl;
 }
