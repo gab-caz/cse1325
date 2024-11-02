@@ -11,13 +11,15 @@ int main(int argc, char** argv)
         return -1;
     }
 
+    Clock newClock(0,0,0);
+
     try
     {
         int hours = std::stoi(argv[1]);
         int minutes = std::stoi(argv[2]);
         int seconds =  std::stoi(argv[3]);
 
-        Clock clock(hours, minutes, seconds);
+        newClock = Clock(hours, minutes, seconds);
     }
     catch(std::out_of_range e)
     {
@@ -27,7 +29,7 @@ int main(int argc, char** argv)
 
     while(true)
     {
-        Clock.print();
+        newClock.print();
 
         std::cout << "Enter 'q' to quit.";
         std::string input;
@@ -39,7 +41,7 @@ int main(int argc, char** argv)
         }
         else
         {
-            Clock.tic();
+            newClock.tic();
         }
     }
 

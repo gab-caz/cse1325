@@ -1,6 +1,6 @@
 CXXFLAGS += --std=c++20
 
-main: main.o clock.o *.h
+clock: main.o clock.o *.h
 		$(CXX) $(CXXFLAGS) main.o clock.o -o clock
 
 main.o: main.cpp *.h

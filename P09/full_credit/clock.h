@@ -7,7 +7,7 @@ class Clock
 {
     public:
         Clock(int hours, int minutes, int seconds);
-        virtual ~Clock() {}
+        virtual ~Clock();
         void tic();
         void print();
 

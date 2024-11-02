@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "clock.h"
 
 Clock::Clock(int hours, int minutes, int seconds) : _hours{hours}, _minutes{minutes}, _seconds{seconds}
@@ -19,7 +20,7 @@ Clock::Clock(int hours, int minutes, int seconds) : _hours{hours}, _minutes{minu
     }
 }
 
-CLock::~Clock()//empty
+Clock::~Clock()//empty
 {
 
 }
