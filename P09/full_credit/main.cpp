@@ -27,11 +27,13 @@ int main(int argc, char** argv)
         return -2;
     }
 
+    std::cout << "\n\nEnter 'q' to quit.\n\n";
+
     while(true)
     {
+        std::cout << "The time is now ";
         newClock.print();
-
-        std::cout << "Enter 'q' to quit.";
+        
         std::string input;
         std::getline(std::cin, input);
 
