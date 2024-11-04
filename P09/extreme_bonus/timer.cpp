@@ -1,4 +1,3 @@
-#include <stdexcept>
 #include "timer.h"
 #include "timer_expired.h"
 

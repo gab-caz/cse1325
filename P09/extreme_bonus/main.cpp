@@ -1,6 +1,3 @@
-#include <iostream>
-#include <stdexcept>
-#include <string>
 #include "clock.h"
 #include "timer.h"
 

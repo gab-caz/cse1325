@@ -2,6 +2,7 @@
 #define TIMER_H
 
 #include "clock.h"
+#include <stdexcept>
 
 class Timer : public Clock
 {
