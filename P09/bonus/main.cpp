@@ -2,6 +2,7 @@
 #include <stdexcept>
 #include <string>
 #include "clock.h"
+#include "timer.h"
 
 int main(int argc, char** argv)
 {
@@ -11,7 +12,7 @@ int main(int argc, char** argv)
         return -1;
     }
 
-    Clock newClock(0,0,0);
+    Timer newTimer(0,0,0);
 
     try
     {
@@ -19,7 +20,7 @@ int main(int argc, char** argv)
         int minutes = std::stoi(argv[2]);
         int seconds =  std::stoi(argv[3]);
 
-        newClock = Clock(hours, minutes, seconds);
+        newTimer = Timer(hours, minutes, seconds);
     }
     catch(std::out_of_range e)
     {
@@ -31,8 +32,8 @@ int main(int argc, char** argv)
 
     while(true)
     {
-        std::cout << "The time is now ";
-        newClock.print();
+        std::cout << "Remaining time is now ";
+        newTimer.print();
         
         std::string input;
         std::getline(std::cin, input);
@@ -43,7 +44,14 @@ int main(int argc, char** argv)
         }
         else
         {
-            newClock.tic();
+            try
+            {
+                newTimer.tic();
+            }
+            catch(std::runtime_error e)
+            {
+                std::cout << "Timer expired " << e.what() << std::endl;
+            }
         }
     }
 
