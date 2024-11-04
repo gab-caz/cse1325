@@ -50,7 +50,8 @@ int main(int argc, char** argv)
             }
             catch(std::runtime_error e)
             {
-                std::cout << "Timer expired " << e.what() << std::endl;
+                std::cout << e.what() << std::endl;
+                return 0;
             }
         }
     }

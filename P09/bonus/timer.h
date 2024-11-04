@@ -3,7 +3,7 @@
 
 #include "clock.h"
 
-class Timer
+class Timer : public Clock
 {
     public:
         Timer(int hours, int minutes, int seconds);
