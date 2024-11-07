@@ -11,19 +11,18 @@ friend std::ostream& operator<<(std::ostream& ost, const Purse& purse)
     return ost;
 }
 
-default Purse::auto operator<=>(const Purse& purse)
-{
-    
-}
-
 Purse& Purse::operator++()
 {
-    
+    ++_pence;
+    rationalize();
+    return *this;
 }
 
-Purse Purse::operator++()
+Purse Purse::operator++(int)
 {
-    
+    Purse result{*this};
+    ++(this*);
+    return result;    
 }
 
 Purse Purse::operator+(const Purse& purse)
