@@ -3,8 +3,8 @@
 
 class Bank
 {
-	public:
-		int main();
+    public:
+        static int main();
 };
 
 #endif
