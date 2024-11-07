@@ -22,17 +22,17 @@ Purse Purse::operator++(int)
 {
     Purse result{*this};
     ++(this*);
-    return result;    
+    return result;
 }
 
 Purse Purse::operator+(const Purse& purse)
 {
-    
+    return Purse(_pounds+purse._pounds, _shillings+purse._shillings, _pence+purse._pence);
 }
 
 Purse Purse::operator-(const Purse& purse)
 {
-    
+    return Purse(_pounds-purse._pounds, _shillings-purse._shillings, _pence-purse._pence);
 }
 
 Purse& Purse::operator+=(const Purse& purse)
