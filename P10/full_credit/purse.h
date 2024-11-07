@@ -11,7 +11,7 @@ class Purse
         void rationalize();
         
     public:
-        Purse(int pounds, int shillings, int pence);
+        Purse(int pounds = 0, int shillings = 0, int pence = 0);
         friend ostream& operator<<(ostream& ost, const Purse& purse);
         default auto operator<=>(const Purse& purse);
         
