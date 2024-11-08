@@ -34,7 +34,7 @@ int main()
     
     for(const auto& [accountName, purse] : vault)
     {
-        std::cout << std::setw(30) << std::right << accountName << " with " << purse << std::endl;
+        std::cout << std::setw(20) << std::right << accountName << " with " << purse << std::endl;
         total += purse;
     }
 
