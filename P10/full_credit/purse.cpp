@@ -55,15 +55,21 @@ Purse& Purse::operator-=(const Purse& purse)
 
 void Purse::rationalize()
 {
-    if(_pence >= 20)
+    _shillings += _pence/12;
+    _pence %= 12;
+
+    if(_pence < 0)
     {
-        _pence -= 20;
-        _shillings++;
+        _pence += 12;
+        _shillings--;
     }
 
-    if(_shillings >= 12)
+    _pounds += _shillings/20;
+    _shillings %= 20;
+
+    if(_shillings < 0)
     {
-        _shillings -= 12;
-        _pounds++;
+        _shillings += 20;
+        _pounds--;
     }
 }

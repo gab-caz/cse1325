@@ -25,20 +25,20 @@ int main()
 
         vault[accountName] = Purse(pounds, shillings, pence);
 
-        std::cout << "Account " << accountName << " created with " << vault[accountName] << std::endl;
+        std::cout << "Account " << accountName << " created with " << vault[accountName] << "\n" << std::endl;
     }
 
-    std::cout << "Account List\n" << "============" << std::endl;
+    std::cout << "\nAccount List\n" << "============\n" << std::endl;
     
     Purse total;
     
     for(const auto& [accountName, purse] : vault)
     {
-        std::cout << accountName << "with " << purse << std::endl;
+        std::cout << std::setw(30) << std::right << accountName << " with " << purse << std::endl;
         total += purse;
     }
 
-    std::cout << "Total in bank is " << total << std::endl;
+    std::cout << "\nTotal in bank is " << total << std::endl;
 
     return 0;
 }
