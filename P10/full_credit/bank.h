@@ -4,7 +4,8 @@
 #include <map>
 #include <string>
 #include <iostream>
+#include <limits>
 
-static int main();
+int main();
 
 #endif

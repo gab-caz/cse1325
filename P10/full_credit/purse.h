@@ -15,7 +15,7 @@ class Purse
     public:
         Purse(int pounds = 0, int shillings = 0, int pence = 0);
         friend std::ostream& operator<<(std::ostream& ost, const Purse& purse);
-        auto operator<=>(const Purse& purse) = default;
+        auto operator<=>(const Purse& purse) const = default;
         
         Purse& operator++();
         Purse operator++(int);
