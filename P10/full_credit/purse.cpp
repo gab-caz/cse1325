@@ -7,7 +7,7 @@ Purse::Purse(int pounds, int shillings, int pence) : _pounds{pounds}, _shillings
 
 friend std::ostream& operator<<(std::ostream& ost, const Purse& purse)
 {
-    ost << "£" << purse._pounds < " " << purse._shillings < "s" << purse._pence < "d";
+    ost << "£" << purse._pounds << " " << purse._shillings << "s" << purse._pence << "d";
     return ost;
 }
 
@@ -21,7 +21,7 @@ Purse& Purse::operator++()
 Purse Purse::operator++(int)
 {
     Purse result{*this};
-    ++(this*);
+    ++(*this);
     return result;
 }
 
@@ -38,8 +38,8 @@ Purse Purse::operator-(const Purse& purse)
 Purse& Purse::operator+=(const Purse& purse)
 {
     _pounds += purse._pounds;
-    _shillings += _purse._shillings;
-    _pence += _purse._pence;
+    _shillings += purse._shillings;
+    _pence += purse._pence;
 
     return *this;    
 }
@@ -47,8 +47,8 @@ Purse& Purse::operator+=(const Purse& purse)
 Purse& Purse::operator-=(const Purse& purse)
 {
     _pounds -= purse._pounds;
-    _shillings -= _purse._shillings;
-    _pence -= _purse._pence;
+    _shillings -= purse._shillings;
+    _pence -= purse._pence;
 
     return *this;
 }

@@ -1,10 +1,10 @@
 #ifndef BANK_H
 #define BANK_H
 
-class Bank
-{
-    public:
-        static int main();
-};
+#include <map>
+#include <string>
+#include <iostream>
+
+static int main();
 
 #endif

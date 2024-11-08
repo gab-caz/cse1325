@@ -1,6 +1,8 @@
 #ifndef PURSE_H
 #define PURSE_H
 
+#include <ostream>
+
 class Purse
 {
     private:
@@ -12,7 +14,7 @@ class Purse
         
     public:
         Purse(int pounds = 0, int shillings = 0, int pence = 0);
-        friend ostream& operator<<(ostream& ost, const Purse& purse);
+        friend std::ostream& operator<<(std::ostream& ost, const Purse& purse);
         auto operator<=>(const Purse& purse) = default;
         
         Purse& operator++();
