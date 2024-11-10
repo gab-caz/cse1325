@@ -13,7 +13,19 @@ std::ostream& operator<<(std::ostream& ost, const Purse& purse)
 
 std::istream& operator>>(std::istream& ist, Purse& purse)//new
 {
+    std::string s;
 
+    ist >> purse._pounds;
+    ist >> purse._shillings;
+    ist >> purse._pence;
+    ist >> s;
+
+    if()
+    {
+        purse.rationalize();
+    }
+
+    return ist;
 }
 
 Purse& Purse::operator++()

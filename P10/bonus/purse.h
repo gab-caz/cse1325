@@ -2,6 +2,7 @@
 #define PURSE_H
 
 #include <ostream>
+#include <istream>
 
 class Purse
 {
