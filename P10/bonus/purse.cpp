@@ -11,6 +11,11 @@ std::ostream& operator<<(std::ostream& ost, const Purse& purse)
     return ost;
 }
 
+std::istream& operator>>(std::istream& ist, Purse& purse)//new
+{
+
+}
+
 Purse& Purse::operator++()
 {
     ++_pence;

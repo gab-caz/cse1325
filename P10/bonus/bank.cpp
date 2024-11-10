@@ -19,7 +19,7 @@ int main()
         std::getline(std::cin, accountName);
 
         int pounds, shillings, pence;
-        std::cout << "Enter your initial deposit (pounds shillings pence): ";
+        std::cout << "Enter your initial deposit (#3 4s5d): ";
         std::cin >> pounds >> shillings >> pence;
         std::cin.ignore(std::numeric_limits<int>::max(), '\n');
 
