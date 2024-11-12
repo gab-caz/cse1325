@@ -18,12 +18,12 @@ int main()
         std::cout << "Name account " << i << ": ";
         std::getline(std::cin, accountName);
 
-        Purse 
+        Purse userDeposit;
         std::cout << "Enter your initial deposit (#3 4s5d): ";
-        std::cin >> pounds >> shillings >> pence;
-        std::cin.ignore(std::numeric_limits<int>::max(), '\n');
+        std::cin >> userDeposit;
+        //std::cin.ignore(std::numeric_limits<int>::max(), '\n');
 
-        vault[accountName] = Purse(pounds, shillings, pence);
+        vault[accountName] = userDeposit;
 
         std::cout << "Account " << accountName << " created with " << vault[accountName] << "\n" << std::endl;
     }
