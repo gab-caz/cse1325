@@ -13,16 +13,22 @@ std::ostream& operator<<(std::ostream& ost, const Purse& purse)
 
 std::istream& operator>>(std::istream& ist, Purse& purse)//new
 {
-    std::string s;
+    std::string input;
+    std::getline(ist, input);
+    std::istringstream iss(input);
 
-    ist >> purse._pounds;
-    ist >> purse._shillings;
-    ist >> purse._pence;
-    ist >> s;
-
-    if()
+    if(iss.get() != '#' || !(iss >> purse._pounds) || !(iss >> purse._shillings) || 
+       iss.get() != 's' || !(iss >> purse._pence) || iss.get() != 'd')
     {
-        purse.rationalize();
+        ist.setstate(std::ios::failbit);
+        return ist;
+    }
+
+    purse.rationalize();
+
+    if(iss >> input)
+    {
+        ist.setstate(std::ios::failbit);
     }
 
     return ist;

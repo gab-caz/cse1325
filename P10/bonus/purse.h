@@ -3,6 +3,8 @@
 
 #include <ostream>
 #include <istream>
+#include <sstream>
+#include <string>
 
 class Purse
 {

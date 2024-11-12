@@ -18,7 +18,7 @@ int main()
         std::cout << "Name account " << i << ": ";
         std::getline(std::cin, accountName);
 
-        int pounds, shillings, pence;
+        Purse 
         std::cout << "Enter your initial deposit (#3 4s5d): ";
         std::cin >> pounds >> shillings >> pence;
         std::cin.ignore(std::numeric_limits<int>::max(), '\n');
