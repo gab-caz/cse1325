@@ -7,7 +7,7 @@ int main(int argc, char* argv[])
 {
     if(argc != 2)
     {
-        std::cerr << "usage: " << argv[0] << "temps.csv" << std::endl;
+        std::cerr << "usage: " << argv[0] << " temps.csv" << std::endl;
         return -1;
     }
 
@@ -51,10 +51,11 @@ int main(int argc, char* argv[])
     {
         int userStartYear, userStartMonth, userStartDay;
         std::cout << "Starting date to list (year month day): ";
-        
+
+        std::string input;
         if(!(std::cin >> userStartYear >> userStartMonth >> userStartDay))
         {
-            std::string input;
+            std::cin.clear();
             std::cin >> input;
 
             if(input == "q")
@@ -66,10 +67,12 @@ int main(int argc, char* argv[])
         Date dateStart(userStartYear, userStartMonth, userStartDay);
 
         int userEndYear, userEndMonth, userEndDay;
-        std::cout << "Ending date to list (year month day): ";
+        std::cout << "Ending   date to list (year month day): ";
         std::cin >> userEndYear >> userEndMonth >> userEndDay;
         
         Date dateEnd(userEndYear, userEndMonth, userEndDay);
+
+        std::cout << std::fixed << std::setprecision(1);
 
         for(auto it = temps.begin(); it != temps.end(); ++it)
         {
@@ -78,7 +81,7 @@ int main(int argc, char* argv[])
 
             if(date >= dateStart && date <= dateEnd)
             {
-                std::cout << date << "    " << std::setprecision(1) << temp << std::endl;
+                std::cout << date << "   " << temp << std::endl;
             }
         }
 
