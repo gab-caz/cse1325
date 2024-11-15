@@ -7,7 +7,7 @@ int main(int argc, char* argv[])
 {
     if(argc != 2)
     {
-        std::cerr << "usage: " << argv[0] << "<data file>" << std::endl;
+        std::cerr << "usage: " << argv[0] << "temps.csv" << std::endl;
         return -1;
     }
 
@@ -24,35 +24,44 @@ int main(int argc, char* argv[])
     std::string s;
     while(std::getline(ifs, s))
     {
-        std::cout << s << std::endl;
         std::istringstream iss{s};
 
         std::string continent, country, state, region;
-        std::getline(stream, continent, ',');
-        std::getline(stream, country, ',');
-        std::getline(stream, state, ',');
-        std::getline(stream, region, ',');
+        std::getline(iss, continent, ',');
+        std::getline(iss, country, ',');
+        std::getline(iss, state, ',');
+        std::getline(iss, region, ',');
 
-        std::string month, day, year, temp;
-        std::getline(stream, month, ',');
-        std::getline(stream, day, ',');
-        std::getline(stream, year, ',');
-        std::getline(stream, temp, ',');
+        std::string monthFile, dayFile, yearFile, tempFile;
+        std::getline(iss, monthFile, ',');
+        std::getline(iss, dayFile, ',');
+        std::getline(iss, yearFile, ',');
+        std::getline(iss, tempFile, ',');
 
-        int month = std::stoi(month);
-        int day = std::stoi(day);
-        int year = std::stoi(year);
+        int month = std::stoi(monthFile);
+        int day = std::stoi(dayFile);
+        int year = std::stoi(yearFile);
         Date date(year, month, day);
 
-        double temperature = std::stod(tem);
-        temps[date] = temp;
+        double temperature = std::stod(tempFile);
+        temps[date] = temperature;
     }
 
     while(true)
     {
         int userStartYear, userStartMonth, userStartDay;
         std::cout << "Starting date to list (year month day): ";
-        std::cin >> userStartYear >> userStartMonth >> userStartDay;
+        
+        if(!(std::cin >> userStartYear >> userStartMonth >> userStartDay))
+        {
+            std::string input;
+            std::cin >> input;
+
+            if(input == "q")
+            {
+                return 0;
+            }
+        }
         
         Date dateStart(userStartYear, userStartMonth, userStartDay);
 
@@ -69,8 +78,13 @@ int main(int argc, char* argv[])
 
             if(date >= dateStart && date <= dateEnd)
             {
-                std::cout << 
+                std::cout << date << "    " << std::setprecision(1) << temp << std::endl;
             }
+        }
+
+        if(!std::cin.good())
+        {
+            return 1;
         }
     }
 

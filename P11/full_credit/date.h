@@ -1,5 +1,5 @@
-#ifndef LIST_TEMPS_H
-#define LIST_TEMPS_H
+#ifndef DATE_H
+#define DATE_H
 
 #include <ostream>
 #include <iomanip>
@@ -12,8 +12,8 @@ class Date
         int _day;
 
     public:
-        Date(int year, int month, int day) = default;
-        const operator<=>(const Date& date) = default;
+        Date(int year, int month, int day);
+        auto operator<=>(const Date& date) const = default;
         friend std::ostream& operator<<(std::ostream& ost, const Date& date);
 };
 
