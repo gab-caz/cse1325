@@ -47,4 +47,32 @@ int main(int argc, char* argv[])
         double temperature = std::stod(tem);
         temps[date] = temp;
     }
+
+    while(true)
+    {
+        int userStartYear, userStartMonth, userStartDay;
+        std::cout << "Starting date to list (year month day): ";
+        std::cin >> userStartYear >> userStartMonth >> userStartDay;
+        
+        Date dateStart(userStartYear, userStartMonth, userStartDay);
+
+        int userEndYear, userEndMonth, userEndDay;
+        std::cout << "Ending date to list (year month day): ";
+        std::cin >> userEndYear >> userEndMonth >> userEndDay;
+        
+        Date dateEnd(userEndYear, userEndMonth, userEndDay);
+
+        for(auto it = temps.begin(); it != temps.end(); ++it)
+        {
+            const Date& date = it->first;
+            const Temp& temp = it->second;
+
+            if(date >= dateStart && date <= dateEnd)
+            {
+                std::cout << 
+            }
+        }
+    }
+
+    return 0;
 }
