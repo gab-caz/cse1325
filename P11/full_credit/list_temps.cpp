@@ -26,11 +26,11 @@ int main(int argc, char* argv[])
     {
         std::istringstream iss{s};
 
-        std::string continent, country, state, region;
-        std::getline(iss, continent, ',');
-        std::getline(iss, country, ',');
-        std::getline(iss, state, ',');
-        std::getline(iss, region, ',');
+        for(int i = 0; i < 4; ++i)
+        {
+            std::string ignoreFields;
+            std::getline(iss, ignoreFields, ',');
+        }
 
         std::string monthFile, dayFile, yearFile, tempFile;
         std::getline(iss, monthFile, ',');
